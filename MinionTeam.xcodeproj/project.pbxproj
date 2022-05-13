@@ -7,19 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA12DC7D28227D26003C612B /* FriendsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA12DC7C28227D26003C612B /* FriendsTableTableViewController.swift */; };
+		FA12DC7F28227DD1003C612B /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA12DC7E28227DD1003C612B /* PhotoCollectionViewController.swift */; };
+		FA12DC8128227E52003C612B /* MyGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA12DC8028227E52003C612B /* MyGroupsTableViewController.swift */; };
+		FA12DC8328227E75003C612B /* MoreGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA12DC8228227E75003C612B /* MoreGroupsTableViewController.swift */; };
 		FAC376F3281FEFA10086732E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC376F2281FEFA10086732E /* AppDelegate.swift */; };
 		FAC376F5281FEFA10086732E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC376F4281FEFA10086732E /* SceneDelegate.swift */; };
-		FAC376F7281FEFA10086732E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC376F6281FEFA10086732E /* ViewController.swift */; };
+		FAC376F7281FEFA10086732E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC376F6281FEFA10086732E /* LoginViewController.swift */; };
 		FAC376FA281FEFA10086732E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC376F8281FEFA10086732E /* Main.storyboard */; };
 		FAC376FC281FEFA30086732E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC376FB281FEFA30086732E /* Assets.xcassets */; };
 		FAC376FF281FEFA30086732E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC376FD281FEFA30086732E /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA12DC7C28227D26003C612B /* FriendsTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableTableViewController.swift; sourceTree = "<group>"; };
+		FA12DC7E28227DD1003C612B /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
+		FA12DC8028227E52003C612B /* MyGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsTableViewController.swift; sourceTree = "<group>"; };
+		FA12DC8228227E75003C612B /* MoreGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreGroupsTableViewController.swift; sourceTree = "<group>"; };
 		FAC376EF281FEFA10086732E /* MinionTeam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinionTeam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC376F2281FEFA10086732E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAC376F4281FEFA10086732E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FAC376F6281FEFA10086732E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FAC376F6281FEFA10086732E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FAC376F9281FEFA10086732E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FAC376FB281FEFA30086732E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAC376FE281FEFA30086732E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,11 +66,15 @@
 			children = (
 				FAC376F2281FEFA10086732E /* AppDelegate.swift */,
 				FAC376F4281FEFA10086732E /* SceneDelegate.swift */,
-				FAC376F6281FEFA10086732E /* ViewController.swift */,
-				FAC376F8281FEFA10086732E /* Main.storyboard */,
 				FAC376FB281FEFA30086732E /* Assets.xcassets */,
 				FAC376FD281FEFA30086732E /* LaunchScreen.storyboard */,
 				FAC37700281FEFA30086732E /* Info.plist */,
+				FAC376F8281FEFA10086732E /* Main.storyboard */,
+				FAC376F6281FEFA10086732E /* LoginViewController.swift */,
+				FA12DC7C28227D26003C612B /* FriendsTableTableViewController.swift */,
+				FA12DC7E28227DD1003C612B /* PhotoCollectionViewController.swift */,
+				FA12DC8028227E52003C612B /* MyGroupsTableViewController.swift */,
+				FA12DC8228227E75003C612B /* MoreGroupsTableViewController.swift */,
 			);
 			path = MinionTeam;
 			sourceTree = "<group>";
@@ -138,8 +150,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAC376F7281FEFA10086732E /* ViewController.swift in Sources */,
+				FA12DC7F28227DD1003C612B /* PhotoCollectionViewController.swift in Sources */,
+				FA12DC8128227E52003C612B /* MyGroupsTableViewController.swift in Sources */,
+				FAC376F7281FEFA10086732E /* LoginViewController.swift in Sources */,
+				FA12DC8328227E75003C612B /* MoreGroupsTableViewController.swift in Sources */,
 				FAC376F3281FEFA10086732E /* AppDelegate.swift in Sources */,
+				FA12DC7D28227D26003C612B /* FriendsTableTableViewController.swift in Sources */,
 				FAC376F5281FEFA10086732E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
