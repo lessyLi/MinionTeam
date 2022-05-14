@@ -9,39 +9,63 @@ import UIKit
 
 class MoreGroupsTableViewController: UITableViewController {
 
+    let reuseIdentifierCustom = "reuseIdentifierCustom"
+    let fromAllGroupsToMyGroupsSegue = "fromAllGroupsToMyGroups"
+    
+    var selectedGroup: Group?
+    
+    var moreGroupsArray = [Group]()
+    
+    func fillMoreGroupsArray() {
+        let group1 = Group(name: "Pessimists group", avatar: UIImage(named: "pessimists")!)
+        let group2 = Group(name: "Optimists group", avatar: UIImage(named: "optimists")!)
+        let group3 = Group(name: "Realists group", avatar: UIImage(named: "realists")!)
+        moreGroupsArray.append(group1)
+        moreGroupsArray.append(group2)
+        moreGroupsArray.append(group3)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        fillMoreGroupsArray()
+        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return moreGroupsArray.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "newGroup", for: indexPath)
-     
-     var content = cell.defaultContentConfiguration()
-     content.text = "Group name"
-     content.secondaryText = "new group"
-     cell.contentConfiguration = content
-     cell.backgroundColor = .secondarySystemBackground
-
-     return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierCustom, for: indexPath) as? CustomTableViewCell else {preconditionFailure("Error")}
+        cell.configure(group: moreGroupsArray[indexPath.row])
+        cell.accessoryType = .none
+        return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedGroup = moreGroupsArray[indexPath.row]
+        performSegue(withIdentifier: fromAllGroupsToMyGroupsSegue, sender: moreGroupsArray[indexPath.row])
+    }
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//     let cell = tableView.dequeueReusableCell(withIdentifier: "newGroup", for: indexPath)
+//     
+//     var content = cell.defaultContentConfiguration()
+//     content.text = "Group name"
+//     content.secondaryText = "new group"
+//     cell.contentConfiguration = content
+//     cell.backgroundColor = .secondarySystemBackground
+//
+//     return cell
+//    }
 
     /*
     // Override to support conditional editing of the table view.
