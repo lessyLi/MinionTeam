@@ -7,7 +7,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+//private let reuseIdentifier = "Cell"
 
 class PhotoCollectionViewController: UICollectionViewController {
 
@@ -15,8 +15,9 @@ class PhotoCollectionViewController: UICollectionViewController {
     
     let reuseIdentifierPhotoCell = "reuseIdentifierPhotoCell"
     
-//    let photos = [UIImage(named: "4.-dave")!, UIImage(named: "16.-phill")!, UIImage(named: "19.-tim")!]
     var photos = [UIImage]()
+    
+    var selectedFriend: Friend?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ class PhotoCollectionViewController: UICollectionViewController {
     
         collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifierPhotoCell)
 
+        title = selectedFriend?.name
         // Do any additional setup after loading the view.
     }
 

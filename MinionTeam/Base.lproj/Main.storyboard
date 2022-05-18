@@ -95,13 +95,27 @@
                                             <segue destination="c2S-gw-N9O" kind="presentation" modalPresentationStyle="fullScreen" id="k7F-DO-B7I"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5o4-kC-VDi">
+                                        <rect key="frame" x="187" y="593" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="3Lv-im-a1r"/>
+                                            <constraint firstAttribute="height" constant="40" id="ISA-8j-gTa"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="heart" catalog="system"/>
+                                        <connections>
+                                            <action selector="pressedHeartButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iZ4-xy-OAB"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="e3T-4J-SPU" firstAttribute="centerX" secondItem="Jx0-Dx-xGC" secondAttribute="centerX" id="2GG-5B-R3u"/>
+                                    <constraint firstItem="5o4-kC-VDi" firstAttribute="centerX" secondItem="Jx0-Dx-xGC" secondAttribute="centerX" id="3k3-mE-9jE"/>
                                     <constraint firstItem="e3T-4J-SPU" firstAttribute="centerY" secondItem="Jx0-Dx-xGC" secondAttribute="centerY" constant="48.5" id="CEC-I2-Rdv"/>
                                     <constraint firstItem="e3T-4J-SPU" firstAttribute="top" secondItem="R1D-g7-jGr" secondAttribute="bottom" constant="20" id="IjN-tQ-n4D"/>
                                     <constraint firstItem="4J5-ct-pXW" firstAttribute="centerX" secondItem="Jx0-Dx-xGC" secondAttribute="centerX" id="TxM-H9-wdw"/>
                                     <constraint firstItem="R1D-g7-jGr" firstAttribute="centerX" secondItem="Jx0-Dx-xGC" secondAttribute="centerX" id="V7a-BN-4hr"/>
+                                    <constraint firstItem="5o4-kC-VDi" firstAttribute="top" secondItem="4J5-ct-pXW" secondAttribute="bottom" constant="20" id="Xod-G3-HXQ"/>
                                     <constraint firstAttribute="bottom" secondItem="4J5-ct-pXW" secondAttribute="bottom" constant="506" id="m6p-js-lNs"/>
                                     <constraint firstItem="4J5-ct-pXW" firstAttribute="top" secondItem="e3T-4J-SPU" secondAttribute="bottom" constant="20" id="mMp-i8-cFu"/>
                                     <constraint firstAttribute="trailing" secondItem="e3T-4J-SPU" secondAttribute="trailing" constant="78.5" id="tC8-Ts-3sz"/>
@@ -125,6 +139,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Kbr-VV-mf9"/>
                     <connections>
+                        <outlet property="heartButton" destination="5o4-kC-VDi" id="BHe-l3-19E"/>
+                        <outlet property="loginButton" destination="4J5-ct-pXW" id="2km-5J-vIY"/>
                         <outlet property="loginInput" destination="9Q8-gc-HjS" id="qkp-kc-PWz"/>
                         <outlet property="passwordInput" destination="eQb-D9-VcE" id="U7j-Ok-y2G"/>
                     </connections>
@@ -142,7 +158,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2iH-jQ-3GA">
-                            <size key="itemSize" width="128" height="128"/>
+                            <size key="itemSize" width="130" height="130"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -157,14 +173,14 @@
                         </tableViewCell>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photo" id="ash-op-Cmu" customClass="CollectionViewCell" customModule="MinionTeam" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="he6-Du-tB7">
-                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="11.-larry" translatesAutoresizingMaskIntoConstraints="NO" id="zeq-Wz-5aX">
-                                            <rect key="frame" x="4" y="4" width="120" height="120"/>
+                                            <rect key="frame" x="4" y="4" width="122" height="122"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -226,16 +242,16 @@
         <scene sceneID="x8h-Ig-Cu6">
             <objects>
                 <tableViewController id="GHB-Ai-cDg" customClass="MyGroupsTableViewController" customModule="MinionTeam" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="QYC-iW-ub9">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="QYC-iW-ub9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="group" id="hx1-g6-xRe">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hx1-g6-xRe" id="WTI-NU-vrT">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -262,16 +278,16 @@
         <scene sceneID="ZBR-Fj-b6q">
             <objects>
                 <tableViewController id="bHM-ja-omm" customClass="MoreGroupsTableViewController" customModule="MinionTeam" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="qtu-FV-h0V">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="qtu-FV-h0V">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newGroup" id="lYk-lm-raW">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lYk-lm-raW" id="mCV-Q1-Oqm">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -310,6 +326,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EA9-wW-DeM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1894" y="98"/>
+        </scene>
+        <!--Canvas View Controller-->
+        <scene sceneID="bhZ-DW-VFu">
+            <objects>
+                <viewController id="mDQ-JO-og3" customClass="CanvasViewController" customModule="MinionTeam" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="chB-k7-REQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1LR-io-BBv" customClass="DrawingControl" customModule="MinionTeam" customModuleProvider="target">
+                                <rect key="frame" x="87" y="328" width="240" height="240"/>
+                                <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1LR-io-BBv" secondAttribute="height" id="6Yu-Bv-PgW"/>
+                                    <constraint firstAttribute="width" constant="240" id="a9j-QL-8dj"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shouldDrawRect" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0oG-2T-Hax"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1LR-io-BBv" firstAttribute="centerX" secondItem="chB-k7-REQ" secondAttribute="centerX" id="HUm-6G-3Ck"/>
+                            <constraint firstItem="1LR-io-BBv" firstAttribute="centerY" secondItem="chB-k7-REQ" secondAttribute="centerY" id="jju-xs-U7Q"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="drawingControl" destination="1LR-io-BBv" id="0Il-kX-fUB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oLF-D7-vC4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2764" y="-1337"/>
         </scene>
         <!--Friends-->
         <scene sceneID="LWE-Sv-eTU">
@@ -352,12 +403,16 @@
     </scenes>
     <resources>
         <image name="11.-larry" width="332" height="308"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="minions" width="2579" height="1330"/>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
