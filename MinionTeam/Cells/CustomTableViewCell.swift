@@ -15,6 +15,7 @@ class CustomTableViewCell: UITableViewCell {
     
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         avatarImageView.image = nil
         titleLabel.text = nil
     }
