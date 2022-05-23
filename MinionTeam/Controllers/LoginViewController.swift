@@ -16,15 +16,10 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    
-//    private func checkLogin() {
-//        guard let login = loginInput.text, let password = passwordInput.text else { return }
-//    }
-    
+
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-//        checkLogin()
-        let login = loginInput.text!
-        let password = passwordInput.text!
+        guard let login = loginInput.text, let password = passwordInput.text else { return false }
+
         if login == "" && password == "" {
             return true
         } else {
