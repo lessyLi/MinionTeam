@@ -41,10 +41,11 @@ class FriendsTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == fromFriendsToGallerySegue,
            let destinationVC = segue.destination as? PhotoCollectionViewController,
-           let friend = sender as? Friend {
-            
+           let friend = sender as? Friend,
+           let cellIndexPath = tableView.indexPathForSelectedRow {
+            let selectedFriend = friendsArray[cellIndexPath.row]
             destinationVC.photos = friend.photos
-            
+            destinationVC.selectedFriend = selectedFriend
         }
     }
     
@@ -54,9 +55,10 @@ class FriendsTableViewController: UITableViewController {
         fillFriendsArray()
         
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
+        title = "My Friends"
         
-//        tableView.delegate = self
-//        tableView.dataSource = self
+        
+
     }
 
     // MARK: - Table view data source

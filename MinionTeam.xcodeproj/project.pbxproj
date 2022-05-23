@@ -25,6 +25,10 @@
 		FAC376FA281FEFA10086732E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC376F8281FEFA10086732E /* Main.storyboard */; };
 		FAC376FC281FEFA30086732E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC376FB281FEFA30086732E /* Assets.xcassets */; };
 		FAC376FF281FEFA30086732E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC376FD281FEFA30086732E /* LaunchScreen.storyboard */; };
+		FAED84172832BD7A00219792 /* LikeCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED84162832BD7A00219792 /* LikeCounterView.swift */; };
+		FAED84192832BD9500219792 /* LikeCounterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAED84182832BD9500219792 /* LikeCounterView.xib */; };
+		FAED841C283380B700219792 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED841B283380B700219792 /* CanvasViewController.swift */; };
+		FAED841F2833819100219792 /* DrawingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED841E2833819100219792 /* DrawingControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +52,10 @@
 		FAC376FB281FEFA30086732E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAC376FE281FEFA30086732E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAC37700281FEFA30086732E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAED84162832BD7A00219792 /* LikeCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCounterView.swift; sourceTree = "<group>"; };
+		FAED84182832BD9500219792 /* LikeCounterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeCounterView.xib; sourceTree = "<group>"; };
+		FAED841B283380B700219792 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
+		FAED841E2833819100219792 /* DrawingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,8 +139,28 @@
 				FAC376F4281FEFA10086732E /* SceneDelegate.swift */,
 				FAC376FD281FEFA30086732E /* LaunchScreen.storyboard */,
 				FAC37700281FEFA30086732E /* Info.plist */,
+				FAED841A2832BDA000219792 /* LikeCounter */,
+				FAED841D2833813700219792 /* Drawing */,
 			);
 			path = MinionTeam;
+			sourceTree = "<group>";
+		};
+		FAED841A2832BDA000219792 /* LikeCounter */ = {
+			isa = PBXGroup;
+			children = (
+				FAED84162832BD7A00219792 /* LikeCounterView.swift */,
+				FAED84182832BD9500219792 /* LikeCounterView.xib */,
+			);
+			path = LikeCounter;
+			sourceTree = "<group>";
+		};
+		FAED841D2833813700219792 /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				FAED841B283380B700219792 /* CanvasViewController.swift */,
+				FAED841E2833819100219792 /* DrawingControl.swift */,
+			);
+			path = Drawing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +221,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAED84192832BD9500219792 /* LikeCounterView.xib in Resources */,
 				FAC376FF281FEFA30086732E /* LaunchScreen.storyboard in Resources */,
 				FAC376FC281FEFA30086732E /* Assets.xcassets in Resources */,
 				FA6C0D6B282EC5110052543F /* CustomTableViewCell.xib in Resources */,
@@ -211,6 +240,7 @@
 				FA6C0D66282EBB9F0052543F /* Group.swift in Sources */,
 				FA12DC7F28227DD1003C612B /* PhotoCollectionViewController.swift in Sources */,
 				FA12DC8128227E52003C612B /* MyGroupsTableViewController.swift in Sources */,
+				FAED84172832BD7A00219792 /* LikeCounterView.swift in Sources */,
 				FAC376F7281FEFA10086732E /* LoginViewController.swift in Sources */,
 				FA12DC8328227E75003C612B /* MoreGroupsTableViewController.swift in Sources */,
 				FAC376F3281FEFA10086732E /* AppDelegate.swift in Sources */,
@@ -219,7 +249,9 @@
 				FA12DC7D28227D26003C612B /* FriendsTableViewController.swift in Sources */,
 				FAC376F5281FEFA10086732E /* SceneDelegate.swift in Sources */,
 				FA98377A282FF40B00EBA4FF /* ExtentionPhotoCollectionVC.swift in Sources */,
+				FAED841F2833819100219792 /* DrawingControl.swift in Sources */,
 				FA2DDDF6282FDB89009F4964 /* CollectionViewCell.swift in Sources */,
+				FAED841C283380B700219792 /* CanvasViewController.swift in Sources */,
 				FA6C0D64282EBB910052543F /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
