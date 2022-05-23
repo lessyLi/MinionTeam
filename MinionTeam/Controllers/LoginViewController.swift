@@ -29,9 +29,6 @@ class LoginViewController: UIViewController {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapFunction))
         self.view.addGestureRecognizer(tapRecognizer)
         
-//        addShadow(view: loginInput)
-//        addShadow(view: passwordInput)
-//        addShadow(view: loginButton)
         
         loginButton.layer.cornerRadius = 10
     }

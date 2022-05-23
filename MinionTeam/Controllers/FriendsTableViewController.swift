@@ -37,6 +37,9 @@ class FriendsTableViewController: UITableViewController {
         friendsArray.append(friend9)
         friendsArray.append(friend10)
     }
+    
+    var sortedFriendsArray = [Character: [Friend]]()
+    
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == fromFriendsToGallerySegue,
@@ -57,87 +60,57 @@ class FriendsTableViewController: UITableViewController {
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
         title = "My Friends"
         
+        sortedFriendsArray = sort(friends: friendsArray)
+    }
+    
+    private func sort(friends: [Friend]) -> [Character: [Friend]] {
+        var friendsDictionary = [Character: [Friend]]()
         
-
+        friends.forEach { friend in
+            guard let firstChar = friend.name.first else {return}
+            
+            if friendsDictionary.keys.contains(firstChar) {
+                friendsDictionary[firstChar]?.append(friend)
+            } else {
+                friendsDictionary[firstChar] = [friend]
+            }
+        }
+        return friendsDictionary
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        
+        return sortedFriendsArray.keys.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return friendsArray.count
+        
+        let sortedKeys = sortedFriendsArray.keys.sorted()
+        let friendsInSection = sortedFriendsArray[sortedKeys[section]]?.count ?? 0
+        
+        return friendsInSection
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        String(sortedFriendsArray.keys.sorted()[section])
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierCustom, for: indexPath) as? CustomTableViewCell else {preconditionFailure("Error")}
-        cell.configure(friend: friendsArray[indexPath.row])
+        
+        let firstChar = sortedFriendsArray.keys.sorted()[indexPath.section]
+        let friendsInSection = sortedFriendsArray[firstChar]!
+        let friend: Friend = friendsInSection[indexPath.row]
+        
+        cell.configure(friend: friend)
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: fromFriendsToGallerySegue, sender: friendsArray[indexPath.row])
     }
-    
-    //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //        let cell = tableView.dequeueReusableCell(withIdentifier: "friend", for: indexPath)
-    //
-    //        var content = cell.defaultContentConfiguration()
-    //        content.text = "frist text"
-    //        content.secondaryText = "second text"
-    //        cell.contentConfiguration = content
-    //        cell.backgroundColor = .secondarySystemBackground
-    //
-    //        return cell
-    //    }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
