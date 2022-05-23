@@ -30,6 +30,7 @@ class MoreGroupsTableViewController: UITableViewController {
 
         fillMoreGroupsArray()
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
+        title = "All Groups"
     }
 
     // MARK: - Table view data source

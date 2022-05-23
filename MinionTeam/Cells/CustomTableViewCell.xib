@@ -16,35 +16,47 @@
                 <rect key="frame" x="0.0" y="0.0" width="427.5" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hj4-KD-AGr">
-                        <rect key="frame" x="4" y="4" width="170" height="192"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="khP-ZT-cjK">
+                        <rect key="frame" x="4" y="4" width="335.5" height="335.5"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hj4-KD-AGr">
+                                <rect key="frame" x="0.0" y="0.0" width="170" height="335.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="cqO-ai-MTk"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="170" id="cqO-ai-MTk"/>
+                            <constraint firstItem="Hj4-KD-AGr" firstAttribute="top" secondItem="khP-ZT-cjK" secondAttribute="top" id="DrL-xb-E2X"/>
+                            <constraint firstAttribute="width" secondItem="Hj4-KD-AGr" secondAttribute="height" multiplier="1:1" id="LX3-cw-W8g"/>
+                            <constraint firstAttribute="trailing" secondItem="Hj4-KD-AGr" secondAttribute="trailing" id="pNG-eV-GBJ"/>
+                            <constraint firstItem="Hj4-KD-AGr" firstAttribute="leading" secondItem="khP-ZT-cjK" secondAttribute="leading" id="tiu-IN-x6L"/>
+                            <constraint firstAttribute="bottom" secondItem="Hj4-KD-AGr" secondAttribute="bottom" id="vtA-Yp-dv5"/>
                         </constraints>
-                    </imageView>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiG-pQ-fgc">
-                        <rect key="frame" x="194" y="88" width="213.5" height="24"/>
+                        <rect key="frame" x="359.5" y="160" width="48" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="JiG-pQ-fgc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1WH-fP-cDJ"/>
-                    <constraint firstItem="JiG-pQ-fgc" firstAttribute="leading" secondItem="Hj4-KD-AGr" secondAttribute="trailing" constant="20" id="3Dh-Q1-57L"/>
-                    <constraint firstItem="Hj4-KD-AGr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="3O4-J6-EQS"/>
-                    <constraint firstItem="Hj4-KD-AGr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="8TF-38-x9t"/>
-                    <constraint firstItem="Hj4-KD-AGr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Agr-fs-mAM"/>
-                    <constraint firstItem="Hj4-KD-AGr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fMO-fl-DBU"/>
-                    <constraint firstItem="Hj4-KD-AGr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="gh4-Aa-RJ9"/>
-                    <constraint firstItem="JiG-pQ-fgc" firstAttribute="leading" secondItem="Hj4-KD-AGr" secondAttribute="trailing" constant="20" id="rlu-oz-wrn"/>
-                    <constraint firstAttribute="bottom" secondItem="Hj4-KD-AGr" secondAttribute="bottom" constant="4" id="wye-Zg-oxD"/>
+                    <constraint firstItem="JiG-pQ-fgc" firstAttribute="leading" secondItem="khP-ZT-cjK" secondAttribute="trailing" constant="20" id="7mD-Tc-bkf"/>
+                    <constraint firstAttribute="bottom" secondItem="khP-ZT-cjK" secondAttribute="bottom" constant="4" id="agR-0k-Hgx"/>
+                    <constraint firstItem="khP-ZT-cjK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="t7Z-VZ-NGY"/>
+                    <constraint firstItem="khP-ZT-cjK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="tal-x5-zQq"/>
                     <constraint firstAttribute="trailing" secondItem="JiG-pQ-fgc" secondAttribute="trailing" constant="20" id="yAm-wW-0OF"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="avatarImageView" destination="Hj4-KD-AGr" id="pz2-we-ebz"/>
+                <outlet property="backView" destination="khP-ZT-cjK" id="sFE-nE-8Uv"/>
                 <outlet property="titleLabel" destination="JiG-pQ-fgc" id="fWV-YM-yOA"/>
             </connections>
             <point key="canvasLocation" x="202.89855072463769" y="93.415178571428569"/>

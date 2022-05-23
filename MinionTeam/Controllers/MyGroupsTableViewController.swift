@@ -30,6 +30,7 @@ class MyGroupsTableViewController: UITableViewController {
 
         fillMyGroupsArray()
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
+        title = "My Groups"
     }
 
     func isItemAlreadyInArray(group: Group) -> Bool {
@@ -41,7 +42,7 @@ class MyGroupsTableViewController: UITableViewController {
     @IBAction func unwindSegueToMyGroup(segue: UIStoryboardSegue) {
         if segue.identifier == fromAllGroupsToMyGroupsSegue,
            let sourceVC = segue.source as? MoreGroupsTableViewController,
-           let selectedGroup = sourceVC.selectedGroup as? Group {
+           let selectedGroup = sourceVC.selectedGroup {
             
             if isItemAlreadyInArray(group: selectedGroup) {return}
             myGroupsArray.append(selectedGroup)
@@ -86,18 +87,14 @@ class MyGroupsTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            myGroupsArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
+
 
     /*
     // Override to support rearranging the table view.
