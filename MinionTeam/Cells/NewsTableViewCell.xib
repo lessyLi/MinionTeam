@@ -51,9 +51,9 @@
                                     <action selector="pressedLikeButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IEz-X0-2tv"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="101" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBc-G9-uGy">
-                                <rect key="frame" x="43.5" y="10" width="25.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="107" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBc-G9-uGy">
+                                <rect key="frame" x="43.5" y="11.5" width="23" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -61,6 +61,7 @@
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Axb-WK-gZD" firstAttribute="centerY" secondItem="ioy-ny-9IP" secondAttribute="centerY" id="K7t-kE-HY8"/>
+                            <constraint firstItem="JBc-G9-uGy" firstAttribute="leading" secondItem="Axb-WK-gZD" secondAttribute="trailing" constant="-6" id="WVc-ty-w5Q"/>
                             <constraint firstAttribute="height" constant="40" id="YyQ-CF-3gn"/>
                             <constraint firstItem="Axb-WK-gZD" firstAttribute="leading" secondItem="ioy-ny-9IP" secondAttribute="leading" constant="4" id="bkM-Pd-QOR"/>
                             <constraint firstItem="JBc-G9-uGy" firstAttribute="leading" secondItem="Axb-WK-gZD" secondAttribute="trailing" constant="-6" id="dKU-cm-1Lq"/>
@@ -86,8 +87,8 @@
                                 <buttonConfiguration key="configuration" style="plain" image="message" catalog="system"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDf-Q5-qdr">
-                                <rect key="frame" x="45" y="10" width="17.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="45" y="11.5" width="15" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -120,8 +121,8 @@
                                 <buttonConfiguration key="configuration" style="plain" image="arrowshape.turn.up.forward" catalog="system"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3v-Gw-a1d">
-                                <rect key="frame" x="44.5" y="10" width="9.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="44.5" y="11.5" width="8" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -165,13 +166,16 @@
             <connections>
                 <outlet property="commentButton" destination="YyH-xd-6yn" id="8AH-CI-KCK"/>
                 <outlet property="commentLabel" destination="mDf-Q5-qdr" id="WHs-Ab-BzV"/>
+                <outlet property="commentView" destination="Y7B-Ag-ENK" id="GEz-AB-T6i"/>
                 <outlet property="likeButton" destination="Axb-WK-gZD" id="SkA-nl-Bnf"/>
                 <outlet property="likeLabel" destination="JBc-G9-uGy" id="v4G-gk-gJF"/>
+                <outlet property="likeView" destination="ioy-ny-9IP" id="L4X-Mx-2eJ"/>
                 <outlet property="newsImage" destination="Umn-F8-QY0" id="Q3y-bM-n59"/>
                 <outlet property="newsText" destination="pxS-8w-9Uj" id="agP-9q-53f"/>
                 <outlet property="newsTitle" destination="K91-8G-T4X" id="BKr-fE-QST"/>
                 <outlet property="shareButton" destination="oLm-cF-xjC" id="2UE-j6-opF"/>
                 <outlet property="shareLabel" destination="n3v-Gw-a1d" id="i0c-MJ-QXl"/>
+                <outlet property="shareView" destination="7HE-ZL-mkl" id="gQZ-56-Xjg"/>
             </connections>
             <point key="canvasLocation" x="-86.956521739130437" y="118.86160714285714"/>
         </tableViewCell>

@@ -26,11 +26,24 @@
                                     <constraint firstAttribute="width" priority="999" constant="170" id="cqO-ai-MTk"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRT-b2-BbA">
+                                <rect key="frame" x="0.0" y="0.0" width="192" height="192"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="animatePressingButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DN5-Qy-9XR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Hj4-KD-AGr" firstAttribute="top" secondItem="khP-ZT-cjK" secondAttribute="top" id="DrL-xb-E2X"/>
+                            <constraint firstItem="bRT-b2-BbA" firstAttribute="centerX" secondItem="Hj4-KD-AGr" secondAttribute="centerX" id="JgK-Bv-lop"/>
                             <constraint firstAttribute="width" secondItem="Hj4-KD-AGr" secondAttribute="height" multiplier="1:1" id="LX3-cw-W8g"/>
+                            <constraint firstItem="bRT-b2-BbA" firstAttribute="centerY" secondItem="Hj4-KD-AGr" secondAttribute="centerY" id="QZa-8E-MRT"/>
+                            <constraint firstItem="bRT-b2-BbA" firstAttribute="width" secondItem="Hj4-KD-AGr" secondAttribute="width" id="ZvQ-eZ-emi"/>
+                            <constraint firstItem="bRT-b2-BbA" firstAttribute="height" secondItem="Hj4-KD-AGr" secondAttribute="height" id="a1a-B0-aFQ"/>
                             <constraint firstAttribute="trailing" secondItem="Hj4-KD-AGr" secondAttribute="trailing" id="pNG-eV-GBJ"/>
                             <constraint firstItem="Hj4-KD-AGr" firstAttribute="leading" secondItem="khP-ZT-cjK" secondAttribute="leading" id="tiu-IN-x6L"/>
                             <constraint firstAttribute="bottom" secondItem="Hj4-KD-AGr" secondAttribute="bottom" id="vtA-Yp-dv5"/>
@@ -59,7 +72,7 @@
                 <outlet property="backView" destination="khP-ZT-cjK" id="sFE-nE-8Uv"/>
                 <outlet property="titleLabel" destination="JiG-pQ-fgc" id="fWV-YM-yOA"/>
             </connections>
-            <point key="canvasLocation" x="202.89855072463769" y="93.415178571428569"/>
+            <point key="canvasLocation" x="202.89855072463769" y="93.080357142857139"/>
         </tableViewCell>
     </objects>
 </document>

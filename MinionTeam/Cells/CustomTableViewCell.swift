@@ -34,8 +34,6 @@ class CustomTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         avatarImageView.layer.cornerRadius = 61
-//        avatarImageView.layer.borderWidth = 0.5
-//        avatarImageView.layer.borderColor = UIColor.gray.cgColor
         backView.layer.cornerRadius = 61
         backView.layer.shadowColor = UIColor.black.cgColor
         backView.layer.shadowOffset = CGSize(width: 10, height: 10)
@@ -46,7 +44,17 @@ class CustomTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    }
+    
+    @IBAction func animatePressingButton(_ sender: UIButton) {
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.5, options: .curveEaseInOut) {
+            self.backView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            self.backView.transform = .identity
+        } completion: { _ in
+            
+        }
+
     }
     
 }

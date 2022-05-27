@@ -95,16 +95,67 @@
                                             <segue destination="c2S-gw-N9O" kind="presentation" modalPresentationStyle="fullScreen" id="k7F-DO-B7I"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgk-kb-ZQ5">
+                                        <rect key="frame" x="116" y="601" width="50" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9mC-uH-agU">
+                                        <rect key="frame" x="182" y="601" width="50" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="ZUC-ak-sw4"/>
+                                            <constraint firstAttribute="width" constant="50" id="rbj-ga-i6L"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IvI-fp-va1">
+                                        <rect key="frame" x="248" y="601" width="50" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIL-QB-Tzb">
+                                        <rect key="frame" x="139.5" y="669" width="135.5" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Show the loading"/>
+                                        <connections>
+                                            <action selector="showLoadingAnimation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P8a-rM-4kM"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="IvI-fp-va1" firstAttribute="height" secondItem="9mC-uH-agU" secondAttribute="height" id="0Qn-LE-Xgt"/>
                                     <constraint firstItem="e3T-4J-SPU" firstAttribute="centerX" secondItem="Jx0-Dx-xGC" secondAttribute="centerX" id="2GG-5B-R3u"/>
+                                    <constraint firstItem="9mC-uH-agU" firstAttribute="top" secondItem="4J5-ct-pXW" secondAttribute="bottom" constant="28" id="7FA-pp-RM3"/>
                                     <constraint firstItem="e3T-4J-SPU" firstAttribute="centerY" secondItem="Jx0-Dx-xGC" secondAttribute="centerY" constant="48.5" id="CEC-I2-Rdv"/>
                                     <constraint firstItem="e3T-4J-SPU" firstAttribute="top" secondItem="R1D-g7-jGr" secondAttribute="bottom" constant="20" id="IjN-tQ-n4D"/>
+                                    <constraint firstItem="9mC-uH-agU" firstAttribute="centerX" secondItem="4J5-ct-pXW" secondAttribute="centerX" id="TCd-vy-74c"/>
                                     <constraint firstItem="4J5-ct-pXW" firstAttribute="centerX" secondItem="Jx0-Dx-xGC" secondAttribute="centerX" id="TxM-H9-wdw"/>
                                     <constraint firstItem="R1D-g7-jGr" firstAttribute="centerX" secondItem="Jx0-Dx-xGC" secondAttribute="centerX" id="V7a-BN-4hr"/>
+                                    <constraint firstItem="jIL-QB-Tzb" firstAttribute="top" secondItem="9mC-uH-agU" secondAttribute="bottom" constant="18" id="VGV-uY-rCw"/>
+                                    <constraint firstItem="IvI-fp-va1" firstAttribute="centerY" secondItem="9mC-uH-agU" secondAttribute="centerY" id="WOn-tf-d1a"/>
+                                    <constraint firstItem="9mC-uH-agU" firstAttribute="leading" secondItem="tgk-kb-ZQ5" secondAttribute="trailing" constant="16" id="eVe-wu-rLv"/>
+                                    <constraint firstItem="tgk-kb-ZQ5" firstAttribute="width" secondItem="9mC-uH-agU" secondAttribute="width" id="eWE-La-Lgi"/>
+                                    <constraint firstItem="IvI-fp-va1" firstAttribute="width" secondItem="9mC-uH-agU" secondAttribute="width" id="g5e-1F-Jn7"/>
+                                    <constraint firstItem="tgk-kb-ZQ5" firstAttribute="height" secondItem="9mC-uH-agU" secondAttribute="height" id="ld7-N7-hPu"/>
                                     <constraint firstAttribute="bottom" secondItem="4J5-ct-pXW" secondAttribute="bottom" constant="506" id="m6p-js-lNs"/>
                                     <constraint firstItem="4J5-ct-pXW" firstAttribute="top" secondItem="e3T-4J-SPU" secondAttribute="bottom" constant="20" id="mMp-i8-cFu"/>
                                     <constraint firstAttribute="trailing" secondItem="e3T-4J-SPU" secondAttribute="trailing" constant="78.5" id="tC8-Ts-3sz"/>
+                                    <constraint firstItem="IvI-fp-va1" firstAttribute="leading" secondItem="9mC-uH-agU" secondAttribute="trailing" constant="16" id="tsM-MY-hbn"/>
+                                    <constraint firstItem="tgk-kb-ZQ5" firstAttribute="centerY" secondItem="9mC-uH-agU" secondAttribute="centerY" id="uRv-eu-I3F"/>
+                                    <constraint firstItem="jIL-QB-Tzb" firstAttribute="centerX" secondItem="9mC-uH-agU" secondAttribute="centerX" id="ykA-8v-oQD"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="xvT-Bd-2BR"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="pjW-2w-gUS"/>
@@ -125,9 +176,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="Kbr-VV-mf9"/>
                     <connections>
+                        <outlet property="firstLoadView" destination="tgk-kb-ZQ5" id="j6G-Hp-Vvx"/>
                         <outlet property="loginButton" destination="4J5-ct-pXW" id="2km-5J-vIY"/>
                         <outlet property="loginInput" destination="9Q8-gc-HjS" id="qkp-kc-PWz"/>
                         <outlet property="passwordInput" destination="eQb-D9-VcE" id="U7j-Ok-y2G"/>
+                        <outlet property="secondLoadView" destination="9mC-uH-agU" id="id1-xD-9lV"/>
+                        <outlet property="thirdLoadView" destination="IvI-fp-va1" id="2jr-le-rgI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

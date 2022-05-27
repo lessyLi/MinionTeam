@@ -12,6 +12,8 @@ class FriendsTableViewController: UITableViewController {
     let reuseIdentifierCustom = "reuseIdentifierCustom"
     let fromFriendsToGallerySegue = "fromFriendsToGallery"
     
+//    let friendButton: UIButton! = nil
+    
     var friendsArray = [Friend]()
     
     func fillFriendsArray() {
@@ -39,25 +41,14 @@ class FriendsTableViewController: UITableViewController {
     }
     
     var sortedFriendsArray = [Character: [Friend]]()
-    
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == fromFriendsToGallerySegue,
-           let destinationVC = segue.destination as? PhotoCollectionViewController,
-           let friend = sender as? Friend,
-           let cellIndexPath = tableView.indexPathForSelectedRow {
-            let selectedFriend = friendsArray[cellIndexPath.row]
-            destinationVC.photos = friend.photos
-            destinationVC.selectedFriend = selectedFriend
-        }
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
         fillFriendsArray()
         
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
+        
         title = "My Friends"
         
         sortedFriendsArray = sort(friends: friendsArray)
@@ -76,6 +67,25 @@ class FriendsTableViewController: UITableViewController {
             }
         }
         return friendsDictionary
+    }
+    
+    private func findSelectedFriend(indexPath: IndexPath) -> Friend {
+        let firstChar = sortedFriendsArray.keys.sorted()[indexPath.section]
+        let friendsInSection = sortedFriendsArray[firstChar]!
+        let selectedFriend: Friend = friendsInSection[indexPath.row]
+        return selectedFriend
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == fromFriendsToGallerySegue,
+           let destinationVC = segue.destination as? PhotoCollectionViewController,
+//           let sender = sender as? self.friendButton,
+           let indexPath = tableView.indexPathForSelectedRow {
+            let selectedFriend = findSelectedFriend(indexPath: indexPath)
+            destinationVC.photos = selectedFriend.photos
+            destinationVC.selectedFriend = selectedFriend
+        }
     }
 
     // MARK: - Table view data source
@@ -101,16 +111,17 @@ class FriendsTableViewController: UITableViewController {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierCustom, for: indexPath) as? CustomTableViewCell else {preconditionFailure("Error")}
         
-        let firstChar = sortedFriendsArray.keys.sorted()[indexPath.section]
-        let friendsInSection = sortedFriendsArray[firstChar]!
-        let friend: Friend = friendsInSection[indexPath.row]
+        let friend: Friend = findSelectedFriend(indexPath: indexPath)
         
         cell.configure(friend: friend)
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: fromFriendsToGallerySegue, sender: friendsArray[indexPath.row])
+        performSegue(withIdentifier: fromFriendsToGallerySegue) { self.findSelectedFriend(indexPath: indexPath)}
     }
-
+    
 }
+
+
+

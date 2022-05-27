@@ -19,8 +19,8 @@ class MyGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     var filteredMyGroupsArray: [Group]!
     
     func fillMyGroupsArray() {
-        let group1 = Group(name: "Pessimists group", avatar: UIImage(named: "pessimists")!)
-        let group2 = Group(name: "Optimists group", avatar: UIImage(named: "optimists")!)
+        let group1 = Group(name: "Pessimists Party", avatar: UIImage(named: "pessimists")!)
+        let group2 = Group(name: "Optimists Party", avatar: UIImage(named: "optimists")!)
         myGroupsArray.append(group1)
         myGroupsArray.append(group2)
     }

@@ -25,7 +25,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47o-bW-2nx">
-                                <rect key="frame" x="120" y="120" width="40" height="40"/>
+                                <rect key="frame" x="120" y="128" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="JFe-Uw-R0D"/>
                                     <constraint firstAttribute="width" constant="40" id="cce-q7-wyq"/>
@@ -37,8 +37,8 @@
                                     <action selector="pressedHeartButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="EjP-je-Uf4"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQ2-Hm-syb">
-                                <rect key="frame" x="120" y="131.5" width="9" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQ2-Hm-syb">
+                                <rect key="frame" x="114.5" y="139.5" width="14.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -48,7 +48,7 @@
                         <constraints>
                             <constraint firstItem="zQ2-Hm-syb" firstAttribute="centerY" secondItem="47o-bW-2nx" secondAttribute="centerY" id="6dt-Fr-1Ri"/>
                             <constraint firstItem="47o-bW-2nx" firstAttribute="leading" secondItem="zQ2-Hm-syb" secondAttribute="trailing" constant="-9" id="C4i-1Z-Slz"/>
-                            <constraint firstAttribute="bottom" secondItem="47o-bW-2nx" secondAttribute="bottom" id="bWC-tA-aFZ"/>
+                            <constraint firstAttribute="bottom" secondItem="47o-bW-2nx" secondAttribute="bottom" constant="-8" id="bWC-tA-aFZ"/>
                             <constraint firstAttribute="trailing" secondItem="47o-bW-2nx" secondAttribute="trailing" id="ngN-Ry-xYZ"/>
                             <constraint firstItem="A0D-OB-m9h" firstAttribute="top" secondItem="l7y-sc-fNT" secondAttribute="top" constant="8" id="pUg-Rz-adl"/>
                             <constraint firstItem="A0D-OB-m9h" firstAttribute="leading" secondItem="l7y-sc-fNT" secondAttribute="leading" constant="8" id="qA3-dO-TaE"/>

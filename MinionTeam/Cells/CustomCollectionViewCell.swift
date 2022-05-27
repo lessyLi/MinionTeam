@@ -42,12 +42,21 @@ class CustomCollectionViewCell: UICollectionViewCell {
 
     @IBAction func pressedHeartButton(_ sender: UIButton) {
         let button = sender
-        var heartsCount = 0
+        var heartsCount = 17
+       
         if isLiked {
             button.setImage(UIImage(systemName: "heart"), for: .normal)
+            UIView.transition(with: heartsCountLabel, duration: 0.5, options: .transitionCrossDissolve) {
+                self.heartsCountLabel.text = String(heartsCount - 1)
+                self.heartsCountLabel.textColor = .black
+            }
         } else {
             button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             heartsCount += 1
+            UIView.transition(with: heartsCountLabel, duration: 0.5, options: [.transitionCrossDissolve, .transitionFlipFromRight]) {
+                self.heartsCountLabel.text = String(heartsCount + 1)
+                self.heartsCountLabel.textColor = .systemRed
+            }
         }
         isLiked = !isLiked
         
