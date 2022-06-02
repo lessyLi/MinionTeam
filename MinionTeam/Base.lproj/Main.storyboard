@@ -191,7 +191,7 @@
         <!--Photo Collection View Controller-->
         <scene sceneID="qFm-mu-XvU">
             <objects>
-                <collectionViewController id="hf0-Jq-18B" customClass="PhotoCollectionViewController" customModule="MinionTeam" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="PhotoCollectionViewController" id="hf0-Jq-18B" customClass="PhotoCollectionViewController" customModule="MinionTeam" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="K0T-6y-D0S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -217,21 +217,7 @@
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="he6-Du-tB7">
                                     <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="11.-larry" translatesAutoresizingMaskIntoConstraints="NO" id="zeq-Wz-5aX">
-                                            <rect key="frame" x="4" y="4" width="122" height="122"/>
-                                        </imageView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="zeq-Wz-5aX" secondAttribute="trailing" constant="4" id="39D-8V-njz"/>
-                                        <constraint firstItem="zeq-Wz-5aX" firstAttribute="leading" secondItem="he6-Du-tB7" secondAttribute="leading" constant="4" id="AA9-fy-Tq4"/>
-                                        <constraint firstItem="zeq-Wz-5aX" firstAttribute="top" secondItem="he6-Du-tB7" secondAttribute="top" constant="4" id="CXM-iH-Kb5"/>
-                                        <constraint firstAttribute="bottom" secondItem="zeq-Wz-5aX" secondAttribute="bottom" constant="4" id="qm7-vE-M5X"/>
-                                    </constraints>
                                 </collectionViewCellContentView>
-                                <connections>
-                                    <outlet property="photo" destination="zeq-Wz-5aX" id="9b5-OK-vcZ"/>
-                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -244,6 +230,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ky-Ai-OFx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4825" y="-497"/>
+        </scene>
+        <!--Full ScreenVC-->
+        <scene sceneID="FVA-S2-5iH">
+            <objects>
+                <viewController storyboardIdentifier="FullScreenVC" id="Z0m-Gf-DFu" customClass="FullScreenVC" customModule="MinionTeam" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q6c-Zz-Dk5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5hc-Ss-LeB">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="WNc-lu-pd6" appends="YES" id="GRg-bl-UQf"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jNv-GC-gx4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5hc-Ss-LeB" firstAttribute="top" secondItem="jNv-GC-gx4" secondAttribute="top" id="Cvl-8r-1b7"/>
+                            <constraint firstItem="jNv-GC-gx4" firstAttribute="bottom" secondItem="5hc-Ss-LeB" secondAttribute="bottom" id="Fyv-Ky-gXz"/>
+                            <constraint firstItem="5hc-Ss-LeB" firstAttribute="leading" secondItem="jNv-GC-gx4" secondAttribute="leading" id="aV6-nD-H1o"/>
+                            <constraint firstItem="5hc-Ss-LeB" firstAttribute="trailing" secondItem="jNv-GC-gx4" secondAttribute="trailing" id="c0E-sq-wk9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="mHb-XZ-CrD"/>
+                    <connections>
+                        <outlet property="fullScreenImageView" destination="5hc-Ss-LeB" id="n6L-gC-ZI6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pg6-NG-IGe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="WNc-lu-pd6"/>
+            </objects>
+            <point key="canvasLocation" x="5568.115942028986" y="-497.54464285714283"/>
         </scene>
         <!--Friends Table View Controller-->
         <scene sceneID="Ala-aL-F8q">
@@ -319,7 +340,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="89b-3n-DaP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3858" y="309"/>
+            <point key="canvasLocation" x="3912" y="309"/>
         </scene>
         <!--More Groups Table View Controller-->
         <scene sceneID="ZBR-Fj-b6q">
@@ -419,7 +440,7 @@
         <!--Friends-->
         <scene sceneID="LWE-Sv-eTU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aJu-PX-dUc" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="FriendsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="aJu-PX-dUc" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" image="person.2" catalog="system" id="5PC-39-u88"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nsn-m2-okZ">
@@ -510,7 +531,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="11.-larry" width="332" height="308"/>
         <image name="minions" width="2579" height="1330"/>
         <image name="newspaper" catalog="system" width="128" height="111"/>
         <image name="person.2" catalog="system" width="128" height="81"/>

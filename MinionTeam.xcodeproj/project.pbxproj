@@ -27,6 +27,7 @@
 		FACEE1F2283AAF2F00B2D9BA /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEE1F1283AAF2F00B2D9BA /* NewsViewController.swift */; };
 		FACEE1F5283AAF7300B2D9BA /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEE1F3283AAF7300B2D9BA /* NewsTableViewCell.swift */; };
 		FACEE1F6283AAF7300B2D9BA /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACEE1F4283AAF7300B2D9BA /* NewsTableViewCell.xib */; };
+		FADB266128427BA500528D3F /* FullScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADB266028427BA500528D3F /* FullScreenVC.swift */; };
 		FAED84172832BD7A00219792 /* LikeCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED84162832BD7A00219792 /* LikeCounterView.swift */; };
 		FAED84192832BD9500219792 /* LikeCounterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAED84182832BD9500219792 /* LikeCounterView.xib */; };
 		FAED841C283380B700219792 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED841B283380B700219792 /* CanvasViewController.swift */; };
@@ -56,6 +57,7 @@
 		FACEE1F1283AAF2F00B2D9BA /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		FACEE1F3283AAF7300B2D9BA /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		FACEE1F4283AAF7300B2D9BA /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
+		FADB266028427BA500528D3F /* FullScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenVC.swift; sourceTree = "<group>"; };
 		FAED84162832BD7A00219792 /* LikeCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCounterView.swift; sourceTree = "<group>"; };
 		FAED84182832BD9500219792 /* LikeCounterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeCounterView.xib; sourceTree = "<group>"; };
 		FAED841B283380B700219792 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				FA12DC7E28227DD1003C612B /* PhotoCollectionViewController.swift */,
 				FA983779282FF40B00EBA4FF /* ExtentionPhotoCollectionVC.swift */,
+				FADB266028427BA500528D3F /* FullScreenVC.swift */,
 			);
 			path = PhotoCollection;
 			sourceTree = "<group>";
@@ -140,10 +143,10 @@
 				FA6C0D67282EBBB90052543F /* Cells */,
 				FA6C0D62282EBB4B0052543F /* Controllers */,
 				FAC376F8281FEFA10086732E /* Main.storyboard */,
+				FAC376FD281FEFA30086732E /* LaunchScreen.storyboard */,
 				FAC376FB281FEFA30086732E /* Assets.xcassets */,
 				FAC376F2281FEFA10086732E /* AppDelegate.swift */,
 				FAC376F4281FEFA10086732E /* SceneDelegate.swift */,
-				FAC376FD281FEFA30086732E /* LaunchScreen.storyboard */,
 				FAC37700281FEFA30086732E /* Info.plist */,
 				FAED841A2832BDA000219792 /* LikeCounter */,
 				FAED841D2833813700219792 /* Drawing */,
@@ -257,6 +260,7 @@
 				FAC376F5281FEFA10086732E /* SceneDelegate.swift in Sources */,
 				FA98377A282FF40B00EBA4FF /* ExtentionPhotoCollectionVC.swift in Sources */,
 				FAED841F2833819100219792 /* DrawingControl.swift in Sources */,
+				FADB266128427BA500528D3F /* FullScreenVC.swift in Sources */,
 				FAED841C283380B700219792 /* CanvasViewController.swift in Sources */,
 				FACEE1F5283AAF7300B2D9BA /* NewsTableViewCell.swift in Sources */,
 				FA6C0D64282EBB910052543F /* Friend.swift in Sources */,

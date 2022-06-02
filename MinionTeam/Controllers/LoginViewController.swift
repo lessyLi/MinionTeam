@@ -50,6 +50,7 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func enterButton(_ sender: UIButton) {
+        showLoadingAnimation(sender)
     }
     
     // MARK: - Loading animation

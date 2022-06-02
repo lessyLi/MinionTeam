@@ -52,6 +52,10 @@ class CustomTableViewCell: UITableViewCell {
             self.backView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
             self.backView.transform = .identity
         } completion: { _ in
+            let storybord = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storybord.instantiateViewController(withIdentifier: "PhotoCollectionViewController") as! PhotoCollectionViewController
+            let navigationController = UINavigationController()
+            navigationController.pushViewController(vc, animated: true)
             
         }
 
