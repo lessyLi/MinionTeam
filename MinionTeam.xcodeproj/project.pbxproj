@@ -28,6 +28,9 @@
 		FACEE1F5283AAF7300B2D9BA /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEE1F3283AAF7300B2D9BA /* NewsTableViewCell.swift */; };
 		FACEE1F6283AAF7300B2D9BA /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACEE1F4283AAF7300B2D9BA /* NewsTableViewCell.xib */; };
 		FADB266128427BA500528D3F /* FullScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADB266028427BA500528D3F /* FullScreenVC.swift */; };
+		FAEC2426284D1A360020BF2B /* PushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEC2425284D1A360020BF2B /* PushAnimator.swift */; };
+		FAEC2428284D1F490020BF2B /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEC2427284D1F490020BF2B /* PopAnimator.swift */; };
+		FAEC242A284D22AC0020BF2B /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEC2429284D22AC0020BF2B /* CustomNavigationController.swift */; };
 		FAED84172832BD7A00219792 /* LikeCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED84162832BD7A00219792 /* LikeCounterView.swift */; };
 		FAED84192832BD9500219792 /* LikeCounterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAED84182832BD9500219792 /* LikeCounterView.xib */; };
 		FAED841C283380B700219792 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED841B283380B700219792 /* CanvasViewController.swift */; };
@@ -58,6 +61,9 @@
 		FACEE1F3283AAF7300B2D9BA /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		FACEE1F4283AAF7300B2D9BA /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		FADB266028427BA500528D3F /* FullScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenVC.swift; sourceTree = "<group>"; };
+		FAEC2425284D1A360020BF2B /* PushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushAnimator.swift; sourceTree = "<group>"; };
+		FAEC2427284D1F490020BF2B /* PopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
+		FAEC2429284D22AC0020BF2B /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		FAED84162832BD7A00219792 /* LikeCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCounterView.swift; sourceTree = "<group>"; };
 		FAED84182832BD9500219792 /* LikeCounterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeCounterView.xib; sourceTree = "<group>"; };
 		FAED841B283380B700219792 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +145,9 @@
 		FAC376F1281FEFA10086732E /* MinionTeam */ = {
 			isa = PBXGroup;
 			children = (
+				FAEC2425284D1A360020BF2B /* PushAnimator.swift */,
+				FAEC2427284D1F490020BF2B /* PopAnimator.swift */,
+				FAEC2429284D22AC0020BF2B /* CustomNavigationController.swift */,
 				FA6C0D61282EBB300052543F /* Model */,
 				FA6C0D67282EBBB90052543F /* Cells */,
 				FA6C0D62282EBB4B0052543F /* Controllers */,
@@ -250,8 +259,10 @@
 				FA6C0D66282EBB9F0052543F /* Group.swift in Sources */,
 				FA12DC7F28227DD1003C612B /* PhotoCollectionViewController.swift in Sources */,
 				FA12DC8128227E52003C612B /* MyGroupsTableViewController.swift in Sources */,
+				FAEC2426284D1A360020BF2B /* PushAnimator.swift in Sources */,
 				FAED84172832BD7A00219792 /* LikeCounterView.swift in Sources */,
 				FAC376F7281FEFA10086732E /* LoginViewController.swift in Sources */,
+				FAEC242A284D22AC0020BF2B /* CustomNavigationController.swift in Sources */,
 				FA12DC8328227E75003C612B /* MoreGroupsTableViewController.swift in Sources */,
 				FAC376F3281FEFA10086732E /* AppDelegate.swift in Sources */,
 				FA6C0D6A282EC5110052543F /* CustomTableViewCell.swift in Sources */,
@@ -260,6 +271,7 @@
 				FAC376F5281FEFA10086732E /* SceneDelegate.swift in Sources */,
 				FA98377A282FF40B00EBA4FF /* ExtentionPhotoCollectionVC.swift in Sources */,
 				FAED841F2833819100219792 /* DrawingControl.swift in Sources */,
+				FAEC2428284D1F490020BF2B /* PopAnimator.swift in Sources */,
 				FADB266128427BA500528D3F /* FullScreenVC.swift in Sources */,
 				FAED841C283380B700219792 /* CanvasViewController.swift in Sources */,
 				FACEE1F5283AAF7300B2D9BA /* NewsTableViewCell.swift in Sources */,
