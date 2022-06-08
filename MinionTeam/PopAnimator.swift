@@ -31,13 +31,13 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         
         UIView.animateKeyframes(withDuration: self.transitionDuration(using: transitionContext), delay: 0, options: .calculationModePaced) {
             
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.75) {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.55) {
                 let rotation = CGAffineTransform(rotationAngle: -.pi/3)
                 let translation = CGAffineTransform(translationX: 1.5 * fromVC.view.frame.width, y: -0.3 * fromVC.view.frame.width)
                 fromVC.view.transform = rotation.concatenating(translation)
             }
             
-            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.8) {
+            UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.7) {
                 toVC.view.transform = .identity
             }
             

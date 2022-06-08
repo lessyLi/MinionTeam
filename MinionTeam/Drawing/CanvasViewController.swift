@@ -13,6 +13,11 @@ class CanvasViewController: UIViewController {
     @IBOutlet var yellowView: UIView!
     @IBOutlet var blueView: UIView!
     
+    @IBOutlet var firstLoadView: UIView!
+    @IBOutlet var secondLoadView: UIView!
+    @IBOutlet var thirdLoadView: UIView!
+    @IBOutlet var loadingView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,14 +76,42 @@ class CanvasViewController: UIViewController {
                 self.yellowView.transform = .identity
             }
         })
+    }
+    
+    @IBAction func showLoading() {
+        
+        firstLoadView.alpha = 0
+        secondLoadView.alpha = 0
+        thirdLoadView.alpha = 0
+        
+        let lifeTime = 1.0
+        
+        UIView.animateKeyframes(withDuration: lifeTime, delay: 0, options: [.repeat]) {
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3) {
+                self.firstLoadView.alpha = 1
+            }
+            UIView.addKeyframe(withRelativeStartTime: 1/3, relativeDuration: 1/3) {
+                self.firstLoadView.alpha = 0
+            }
+            UIView.addKeyframe(withRelativeStartTime: 1/6, relativeDuration: 1/3) {
+                self.secondLoadView.alpha = 1
+            }
+            UIView.addKeyframe(withRelativeStartTime: 1/2, relativeDuration: 1/3) {
+                self.secondLoadView.alpha = 0
+            }
+            UIView.addKeyframe(withRelativeStartTime: 1/3, relativeDuration: 1/3) {
+                self.thirdLoadView.alpha = 1
+            }
+            UIView.addKeyframe(withRelativeStartTime: 2/3, relativeDuration: 1/3) {
+                self.thirdLoadView.alpha = 0
+            }
+
+        } completion: { _ in
+            
+        }
 
         
-//        // поворот
-//        yellowView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/4)
-//        // сразу несколько трансформаций
-//        yellowView.transform = CGAffineTransform(rotationAngle: CGFloat.pi/4).concatenating(CGAffineTransform(scaleX: 0.5, y: 0.5))
-//        // возврат к начальному состоянию
-//        yellowView.transform = .identity
     }
 
 }
