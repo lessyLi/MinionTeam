@@ -52,7 +52,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="107" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBc-G9-uGy">
-                                <rect key="frame" x="43.5" y="11.5" width="23" height="17"/>
+                                <rect key="frame" x="41.5" y="11.5" width="23" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -61,10 +61,9 @@
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Axb-WK-gZD" firstAttribute="centerY" secondItem="ioy-ny-9IP" secondAttribute="centerY" id="K7t-kE-HY8"/>
-                            <constraint firstItem="JBc-G9-uGy" firstAttribute="leading" secondItem="Axb-WK-gZD" secondAttribute="trailing" constant="-6" id="WVc-ty-w5Q"/>
+                            <constraint firstItem="JBc-G9-uGy" firstAttribute="leading" secondItem="Axb-WK-gZD" secondAttribute="trailing" constant="-8" id="WVc-ty-w5Q"/>
                             <constraint firstAttribute="height" constant="40" id="YyQ-CF-3gn"/>
                             <constraint firstItem="Axb-WK-gZD" firstAttribute="leading" secondItem="ioy-ny-9IP" secondAttribute="leading" constant="4" id="bkM-Pd-QOR"/>
-                            <constraint firstItem="JBc-G9-uGy" firstAttribute="leading" secondItem="Axb-WK-gZD" secondAttribute="trailing" constant="-6" id="dKU-cm-1Lq"/>
                             <constraint firstAttribute="width" secondItem="ioy-ny-9IP" secondAttribute="height" multiplier="2:1" id="u31-zT-qob"/>
                             <constraint firstItem="JBc-G9-uGy" firstAttribute="centerY" secondItem="ioy-ny-9IP" secondAttribute="centerY" id="ww9-XQ-WnY"/>
                         </constraints>
@@ -87,7 +86,7 @@
                                 <buttonConfiguration key="configuration" style="plain" image="message" catalog="system"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDf-Q5-qdr">
-                                <rect key="frame" x="45" y="11.5" width="15" height="17"/>
+                                <rect key="frame" x="43" y="11.5" width="15" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -98,7 +97,7 @@
                             <constraint firstItem="YyH-xd-6yn" firstAttribute="leading" secondItem="Y7B-Ag-ENK" secondAttribute="leading" constant="4" id="0pg-o2-doR"/>
                             <constraint firstItem="YyH-xd-6yn" firstAttribute="centerY" secondItem="Y7B-Ag-ENK" secondAttribute="centerY" id="6fF-vD-cGX"/>
                             <constraint firstAttribute="height" constant="40" id="lbG-34-c48"/>
-                            <constraint firstItem="mDf-Q5-qdr" firstAttribute="leading" secondItem="YyH-xd-6yn" secondAttribute="trailing" constant="-6" id="r4X-Ng-8qe"/>
+                            <constraint firstItem="mDf-Q5-qdr" firstAttribute="leading" secondItem="YyH-xd-6yn" secondAttribute="trailing" constant="-8" id="r4X-Ng-8qe"/>
                             <constraint firstAttribute="width" secondItem="Y7B-Ag-ENK" secondAttribute="height" multiplier="2:1" id="v2z-0T-qln"/>
                             <constraint firstItem="mDf-Q5-qdr" firstAttribute="centerY" secondItem="Y7B-Ag-ENK" secondAttribute="centerY" id="zgo-jz-LZC"/>
                         </constraints>
@@ -121,7 +120,7 @@
                                 <buttonConfiguration key="configuration" style="plain" image="arrowshape.turn.up.forward" catalog="system"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3v-Gw-a1d">
-                                <rect key="frame" x="44.5" y="11.5" width="8" height="17"/>
+                                <rect key="frame" x="42.5" y="11.5" width="8" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -132,7 +131,7 @@
                             <constraint firstItem="oLm-cF-xjC" firstAttribute="leading" secondItem="7HE-ZL-mkl" secondAttribute="leading" constant="4" id="3fz-Q2-Tej"/>
                             <constraint firstItem="oLm-cF-xjC" firstAttribute="centerY" secondItem="7HE-ZL-mkl" secondAttribute="centerY" id="KL9-1d-0Mh"/>
                             <constraint firstItem="n3v-Gw-a1d" firstAttribute="centerY" secondItem="7HE-ZL-mkl" secondAttribute="centerY" id="Ki7-hA-Qyi"/>
-                            <constraint firstItem="n3v-Gw-a1d" firstAttribute="leading" secondItem="oLm-cF-xjC" secondAttribute="trailing" constant="-6" id="MgN-gL-reN"/>
+                            <constraint firstItem="n3v-Gw-a1d" firstAttribute="leading" secondItem="oLm-cF-xjC" secondAttribute="trailing" constant="-8" id="MgN-gL-reN"/>
                             <constraint firstAttribute="width" secondItem="7HE-ZL-mkl" secondAttribute="height" multiplier="2:1" id="VNA-LV-uAz"/>
                             <constraint firstAttribute="height" constant="40" id="qil-X6-9WP"/>
                         </constraints>

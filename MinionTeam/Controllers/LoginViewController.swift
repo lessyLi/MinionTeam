@@ -9,6 +9,9 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var minionsImageView: UIImageView!
+    @IBOutlet weak var loginLabel: UILabel!
+    @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var loginInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -16,6 +19,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var firstLoadView: UIView!
     @IBOutlet var secondLoadView: UIView!
     @IBOutlet var thirdLoadView: UIView!
+    @IBOutlet var loadingView: UIView!
     
     // MARK: - Life Circle
     
@@ -24,6 +28,11 @@ class LoginViewController: UIViewController {
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapFunction))
         self.view.addGestureRecognizer(tapRecognizer)
+        
+        firstLoadView.alpha = 0
+        secondLoadView.alpha = 0
+        thirdLoadView.alpha = 0
+        loadingView.isHidden = true
         
         loginButton.layer.cornerRadius = 10
     }
@@ -48,32 +57,130 @@ class LoginViewController: UIViewController {
             return false
         }
     }
-
-    @IBAction func enterButton(_ sender: UIButton) {
-        showLoadingAnimation(sender)
-    }
     
+  
     // MARK: - Loading animation
     
-    @IBAction func showLoadingAnimation(_ sender: UIButton) {
+    @IBAction func logIn(_ sender: UIButton) {
         
-        self.firstLoadView.alpha = 0
-        self.secondLoadView.alpha = 0
-        self.thirdLoadView.alpha = 0
+        minionsImageView.isHidden = true
+        loginLabel.isHidden = true
+        loginInput.isHidden = true
+        passwordLabel.isHidden = true
+        passwordInput.isHidden = true
+        loginButton.isHidden = true
+        
+        loadingView.isHidden = false
+        showLoadingCircle()
+    }
+
+    func showLoadingCircle() {
+        
+        firstLoadView.alpha = 0
+        secondLoadView.alpha = 0
+        thirdLoadView.alpha = 0
         
         let lifeTime = 1.0
         
-        UIView.animate(withDuration: lifeTime, delay: 0, options: [.autoreverse, .repeat]) {
-            self.firstLoadView.alpha = 1
+        UIView.animateKeyframes(withDuration: lifeTime, delay: 0, options: []) {
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3) {
+                self.firstLoadView.alpha = 1
+            }
+            UIView.addKeyframe(withRelativeStartTime: 1/3, relativeDuration: 1/3) {
+                self.firstLoadView.alpha = 0
+            }
+            UIView.addKeyframe(withRelativeStartTime: 1/6, relativeDuration: 1/3) {
+                self.secondLoadView.alpha = 1
+            }
+            UIView.addKeyframe(withRelativeStartTime: 1/2, relativeDuration: 1/3) {
+                self.secondLoadView.alpha = 0
+            }
+            UIView.addKeyframe(withRelativeStartTime: 1/3, relativeDuration: 1/3) {
+                self.thirdLoadView.alpha = 1
+            }
+            UIView.addKeyframe(withRelativeStartTime: 2/3, relativeDuration: 1/3) {
+                self.thirdLoadView.alpha = 0
+            }
+            
+        } completion: { _ in
+            self.finishLoadingCircle()
         }
-        UIView.animate(withDuration: lifeTime, delay: lifeTime / 3, options: [.autoreverse, .repeat]) {
-            self.secondLoadView.alpha = 1
-        }
-        UIView.animate(withDuration: lifeTime, delay: lifeTime / 3 * 2, options: [.autoreverse, .repeat]) {
-            self.thirdLoadView.alpha = 1
-        }
-        
     }
+    
+    func finishLoadingCircle() {
+
+        firstLoadView.alpha = 0
+        secondLoadView.alpha = 0
+        thirdLoadView.alpha = 0
+        
+        let lifeTime = 1.0
+        
+        UIView.animateKeyframes(withDuration: lifeTime, delay: 0, options: []) {
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3) {
+                self.firstLoadView.alpha = 1
+            }
+            UIView.addKeyframe(withRelativeStartTime: 1/3, relativeDuration: 1/3) {
+                self.firstLoadView.alpha = 0
+            }
+            UIView.addKeyframe(withRelativeStartTime: 1/6, relativeDuration: 1/3) {
+                self.secondLoadView.alpha = 1
+            }
+            UIView.addKeyframe(withRelativeStartTime: 1/2, relativeDuration: 1/3) {
+                self.secondLoadView.alpha = 0
+            }
+            UIView.addKeyframe(withRelativeStartTime: 1/3, relativeDuration: 1/3) {
+                self.thirdLoadView.alpha = 1
+            }
+            UIView.addKeyframe(withRelativeStartTime: 2/3, relativeDuration: 1/3) {
+                self.thirdLoadView.alpha = 0
+            }
+
+        } completion: { _ in
+            self.showLoadingCircle()
+            self.performSegue(withIdentifier: "logInSegue", sender: nil)
+        }
+
+    }
+    
+//    @IBAction func showLoadingAnimation(_ sender: UIButton) {
+//
+//        self.firstLoadView.alpha = 0
+//        self.secondLoadView.alpha = 0
+//        self.thirdLoadView.alpha = 0
+//
+//
+//        let duration = 3.0
+//        let lifeTime = duration / 3
+//
+//        UIView.animateKeyframes(withDuration: duration, delay: 0, options: [.calculationModePaced, .autoreverse, .repeat]) {
+//
+//            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: lifeTime) {
+//                self.firstLoadView.alpha = 1
+//            }
+//            UIView.addKeyframe(withRelativeStartTime: lifeTime, relativeDuration: lifeTime) {
+//                self.firstLoadView.alpha = 0
+//            }
+//            UIView.addKeyframe(withRelativeStartTime: lifeTime / 3, relativeDuration: lifeTime) {
+//                self.secondLoadView.alpha = 1
+//            }
+//            UIView.addKeyframe(withRelativeStartTime: lifeTime * 1.3, relativeDuration: lifeTime) {
+//                self.secondLoadView.alpha = 0
+//            }
+//            UIView.addKeyframe(withRelativeStartTime: lifeTime / 3 * 2, relativeDuration: lifeTime) {
+//                self.thirdLoadView.alpha = 1
+//            }
+//            UIView.addKeyframe(withRelativeStartTime: lifeTime / 5 * 2, relativeDuration: lifeTime) {
+//                self.thirdLoadView.alpha = 0
+//            }
+//
+//        } completion: { _ in
+//
+//        }
+//
+//
+//    }
     
 }
 
