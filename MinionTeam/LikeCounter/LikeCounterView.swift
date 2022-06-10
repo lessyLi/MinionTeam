@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable class LikeCounterView: UIView {
+class LikeCounterView: UITableViewHeaderFooterView {
     
     @IBOutlet weak var heartButton: UIButton!
     @IBOutlet weak var likeCounterLabel: UILabel!
@@ -17,20 +17,20 @@ import UIKit
 
     private var view: UIView?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
+//    init(frame: CGRect) {
+//        super.init(frame: frame)
+//        setup()
+//    }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
-    }
+//    required init?(coder: NSCoder) {
+//        super.init(coder: coder)
+//        setup()
+//    }
     
     private func loadFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "LikeCounterView", bundle: bundle)
-        guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else {return UIView()}
+        guard let view = nib.instantiate(withOwner: self, options: nil).first as? UITableViewHeaderFooterView else {return UIView()}
         return view
     }
     
