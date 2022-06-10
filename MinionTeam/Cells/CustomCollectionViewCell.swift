@@ -32,8 +32,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        photoImageView.layer.cornerRadius = 61
-//        backView.layer.cornerRadius = 61
+        photoImageView.layer.cornerRadius = 12
+        backView.layer.cornerRadius = 12
 //        backView.layer.shadowColor = UIColor.black.cgColor
 //        backView.layer.shadowOffset = CGSize(width: 10, height: 10)
 //        backView.layer.shadowRadius = 10
@@ -62,5 +62,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
         
         heartsCountLabel.text = String(heartsCount)
     }
+    
     
 }

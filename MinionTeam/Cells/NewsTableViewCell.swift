@@ -49,21 +49,21 @@ class NewsTableViewCell: UITableViewCell {
         let button = sender
         button.setImage(UIImage(systemName: "heart"), for: .normal)
         var likeCount = 107
+        
         if isLiked {
-            
             likeLabel.font = .systemFont(ofSize: 14)
             
             UIView.transition(with: likeLabel, duration: 0.5, options: .transitionCrossDissolve) {
                 self.likeLabel.text = String(likeCount - 1)
                 self.likeLabel.textColor = .black
             }
+            
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseInOut) {
                 self.likeView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
                 self.likeView.backgroundColor = .secondarySystemBackground
                 self.likeView.transform = .identity
-            } completion: { _ in
-                
             }
+            
         } else {
             likeCount += 1
             likeLabel.font = .boldSystemFont(ofSize: 14)
@@ -87,8 +87,6 @@ class NewsTableViewCell: UITableViewCell {
             
             self.likeView.transform = .identity
             self.likeButton.transform = .identity
-
-            
         }
         isLiked = !isLiked
         
