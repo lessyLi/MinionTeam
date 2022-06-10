@@ -32,8 +32,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        photoImageView.layer.cornerRadius = 61
-//        backView.layer.cornerRadius = 61
+        photoImageView.layer.cornerRadius = 12
+        backView.layer.cornerRadius = 12
 //        backView.layer.shadowColor = UIColor.black.cgColor
 //        backView.layer.shadowOffset = CGSize(width: 10, height: 10)
 //        backView.layer.shadowRadius = 10
@@ -42,16 +42,26 @@ class CustomCollectionViewCell: UICollectionViewCell {
 
     @IBAction func pressedHeartButton(_ sender: UIButton) {
         let button = sender
-        var heartsCount = 0
+        var heartsCount = 17
+       
         if isLiked {
             button.setImage(UIImage(systemName: "heart"), for: .normal)
+            UIView.transition(with: heartsCountLabel, duration: 0.5, options: .transitionCrossDissolve) {
+                self.heartsCountLabel.text = String(heartsCount - 1)
+                self.heartsCountLabel.textColor = .black
+            }
         } else {
             button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             heartsCount += 1
+            UIView.transition(with: heartsCountLabel, duration: 0.5, options: [.transitionCrossDissolve, .transitionFlipFromRight]) {
+                self.heartsCountLabel.text = String(heartsCount + 1)
+                self.heartsCountLabel.textColor = .systemRed
+            }
         }
         isLiked = !isLiked
         
         heartsCountLabel.text = String(heartsCount)
     }
+    
     
 }

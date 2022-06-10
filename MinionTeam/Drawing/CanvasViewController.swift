@@ -10,11 +10,30 @@ import UIKit
 class CanvasViewController: UIViewController {
 
     @IBOutlet weak var drawingControl: DrawingControl!
+    @IBOutlet var yellowView: UIView!
+    @IBOutlet var blueView: UIView!
+    
+    @IBOutlet var firstLoadView: UIView!
+    @IBOutlet var secondLoadView: UIView!
+    @IBOutlet var thirdLoadView: UIView!
+    @IBOutlet var loadingView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        drawingControl.addTarget(self, action: #selector(drawingChange), for: .valueChanged)
+        blueView.frame = CGRect(x: 50, y: 200, width: 100, height: 200)
+        yellowView.frame = blueView.frame
+        
+        let rotation = CGAffineTransform(rotationAngle: -.pi/2)
+        let translation = CGAffineTransform(translationX: 1.5 * blueView.frame.width, y: -0.5 * blueView.frame.width)
+        
+        yellowView.transform = rotation.concatenating(translation)
+        
+    
+        
+//        drawingControl.addTarget(self, action: #selector(drawingChange), for: .valueChanged)
+        
+        
 
     }
     
@@ -27,23 +46,72 @@ class CanvasViewController: UIViewController {
         super.viewWillAppear(animated)
         
 //        drawingControl.setNeedsLayout()
+    
+//        // поворот
+//        drawingControl.transform = CGAffineTransform(rotationAngle: CGFloat.pi/4)
+//        // сразу несколько трансформаций
+//        drawingControl.transform = CGAffineTransform(rotationAngle: CGFloat.pi/4).concatenating(CGAffineTransform(scaleX: 0.5, y: 0.5))
+//        // возврат к начальному состоянию
+//        drawingControl.transform = .identity
         
-        // поворот
-        drawingControl.transform = CGAffineTransform(rotationAngle: CGFloat.pi/4)
-        // сразу несколько трансформаций
-        drawingControl.transform = CGAffineTransform(rotationAngle: CGFloat.pi/4).concatenating(CGAffineTransform(scaleX: 0.5, y: 0.5))
-        // возврат к начальному состоянию
-        drawingControl.transform = .identity
     }
+    
+    @IBAction func animate() {
+        
+        UIView.animateKeyframes(withDuration: 6, delay: 0, options: .calculationModePaced, animations: {
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.6) {
+                let rotation = CGAffineTransform(rotationAngle: .pi/4)
+                let translation = CGAffineTransform(translationX: -0.5 * self.blueView.frame.width, y: -0.5 * self.blueView.frame.width)
+                self.blueView.transform = rotation.concatenating(translation)
+            }
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.4) {
+                let rotation = CGAffineTransform(rotationAngle: -.pi/8)
+                let translation = CGAffineTransform(translationX: 0.5 * self.blueView.frame.width, y: -0.2 * self.blueView.frame.width)
+                self.yellowView.transform = rotation.concatenating(translation)
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.7, relativeDuration: 0.3) {
+                // обратно
+                self.yellowView.transform = .identity
+            }
+        })
     }
-    */
+    
+    @IBAction func showLoading() {
+        
+        firstLoadView.alpha = 0
+        secondLoadView.alpha = 0
+        thirdLoadView.alpha = 0
+        
+        let lifeTime = 1.0
+        
+        UIView.animateKeyframes(withDuration: lifeTime, delay: 0, options: [.repeat]) {
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/3) {
+                self.firstLoadView.alpha = 1
+            }
+            UIView.addKeyframe(withRelativeStartTime: 1/3, relativeDuration: 1/3) {
+                self.firstLoadView.alpha = 0
+            }
+            UIView.addKeyframe(withRelativeStartTime: 1/6, relativeDuration: 1/3) {
+                self.secondLoadView.alpha = 1
+            }
+            UIView.addKeyframe(withRelativeStartTime: 1/2, relativeDuration: 1/3) {
+                self.secondLoadView.alpha = 0
+            }
+            UIView.addKeyframe(withRelativeStartTime: 1/3, relativeDuration: 1/3) {
+                self.thirdLoadView.alpha = 1
+            }
+            UIView.addKeyframe(withRelativeStartTime: 2/3, relativeDuration: 1/3) {
+                self.thirdLoadView.alpha = 0
+            }
+
+        } completion: { _ in
+            
+        }
+
+        
+    }
 
 }

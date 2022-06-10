@@ -9,35 +9,46 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="KGk-i7-Jjw" customClass="CustomTableViewCell" customModule="MinionTeam" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="456" height="200"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="CustomTableViewCell" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="34" id="KGk-i7-Jjw" customClass="CustomTableViewCell" customModule="MinionTeam" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="249" height="34"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="427.5" height="200"/>
+                <rect key="frame" x="0.0" y="0.0" width="224.5" height="34"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="khP-ZT-cjK">
-                        <rect key="frame" x="4" y="4" width="335.5" height="335.5"/>
+                        <rect key="frame" x="4" y="4" width="24" height="24"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hj4-KD-AGr">
-                                <rect key="frame" x="0.0" y="0.0" width="170" height="335.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="170" id="cqO-ai-MTk"/>
-                                </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRT-b2-BbA">
+                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="animatePressingButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DN5-Qy-9XR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Hj4-KD-AGr" firstAttribute="top" secondItem="khP-ZT-cjK" secondAttribute="top" id="DrL-xb-E2X"/>
-                            <constraint firstAttribute="width" secondItem="Hj4-KD-AGr" secondAttribute="height" multiplier="1:1" id="LX3-cw-W8g"/>
-                            <constraint firstAttribute="trailing" secondItem="Hj4-KD-AGr" secondAttribute="trailing" id="pNG-eV-GBJ"/>
-                            <constraint firstItem="Hj4-KD-AGr" firstAttribute="leading" secondItem="khP-ZT-cjK" secondAttribute="leading" id="tiu-IN-x6L"/>
-                            <constraint firstAttribute="bottom" secondItem="Hj4-KD-AGr" secondAttribute="bottom" id="vtA-Yp-dv5"/>
+                            <constraint firstItem="Hj4-KD-AGr" firstAttribute="leading" secondItem="khP-ZT-cjK" secondAttribute="leading" id="0sR-0g-EyQ"/>
+                            <constraint firstItem="Hj4-KD-AGr" firstAttribute="top" secondItem="khP-ZT-cjK" secondAttribute="top" id="2Ky-cV-H7S"/>
+                            <constraint firstAttribute="trailing" secondItem="bRT-b2-BbA" secondAttribute="trailing" id="8Yn-PH-Fp5"/>
+                            <constraint firstItem="bRT-b2-BbA" firstAttribute="top" secondItem="khP-ZT-cjK" secondAttribute="top" id="Piy-D4-HUI"/>
+                            <constraint firstAttribute="width" constant="122" id="U2l-41-H67"/>
+                            <constraint firstAttribute="bottom" secondItem="bRT-b2-BbA" secondAttribute="bottom" id="U3o-4K-Fda"/>
+                            <constraint firstAttribute="width" secondItem="khP-ZT-cjK" secondAttribute="height" multiplier="1:1" id="bQp-IK-IFL"/>
+                            <constraint firstItem="bRT-b2-BbA" firstAttribute="leading" secondItem="khP-ZT-cjK" secondAttribute="leading" id="fKK-j7-QNQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Hj4-KD-AGr" secondAttribute="trailing" id="yFr-du-43B"/>
+                            <constraint firstAttribute="bottom" secondItem="Hj4-KD-AGr" secondAttribute="bottom" id="z5t-e7-Ror"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiG-pQ-fgc">
-                        <rect key="frame" x="359.5" y="160" width="48" height="24"/>
+                        <rect key="frame" x="48" y="5" width="48" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -45,21 +56,22 @@
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="JiG-pQ-fgc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1WH-fP-cDJ"/>
                     <constraint firstItem="JiG-pQ-fgc" firstAttribute="leading" secondItem="khP-ZT-cjK" secondAttribute="trailing" constant="20" id="7mD-Tc-bkf"/>
                     <constraint firstAttribute="bottom" secondItem="khP-ZT-cjK" secondAttribute="bottom" constant="4" id="agR-0k-Hgx"/>
                     <constraint firstItem="khP-ZT-cjK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="t7Z-VZ-NGY"/>
                     <constraint firstItem="khP-ZT-cjK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="tal-x5-zQq"/>
-                    <constraint firstAttribute="trailing" secondItem="JiG-pQ-fgc" secondAttribute="trailing" constant="20" id="yAm-wW-0OF"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <constraints>
+                <constraint firstItem="JiG-pQ-fgc" firstAttribute="centerY" secondItem="njF-e1-oar" secondAttribute="centerY" id="1y6-e4-SDB"/>
+            </constraints>
             <connections>
                 <outlet property="avatarImageView" destination="Hj4-KD-AGr" id="pz2-we-ebz"/>
                 <outlet property="backView" destination="khP-ZT-cjK" id="sFE-nE-8Uv"/>
                 <outlet property="titleLabel" destination="JiG-pQ-fgc" id="fWV-YM-yOA"/>
             </connections>
-            <point key="canvasLocation" x="202.89855072463769" y="93.415178571428569"/>
+            <point key="canvasLocation" x="52.898550724637687" y="37.5"/>
         </tableViewCell>
     </objects>
 </document>
