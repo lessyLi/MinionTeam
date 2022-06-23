@@ -88,56 +88,5 @@ class FullScreenVC: UIViewController {
             print("default")
         }
     }
-    
-    
-//    @objc func swipePhoto(_ recognizer: UIPanGestureRecognizer) {
-//
-//        switch recognizer.state {
-//
-//        case .began:
-//
-//            isLeftSwipe = false
-//            isRightSwipe = false
-//
-//            print("began")
-//
-//        case .changed:
-//            let translation = recognizer.translation(in: self.view)
-//            print(translation)
-//
-//            if translation.x < 0 {
-//                isLeftSwipe = true
-//            } else {
-//                isRightSwipe = true
-//            }
-//            print("changed")
-//
-//        case .ended:
-//            if isLeftSwipe {
-//                if selectedPhotoIndex < photos.count - 1 {
-//                    fullScreenImageView.image = photos[selectedPhotoIndex + 1]
-//                    selectedPhotoIndex += 1
-//                }
-//            } else {
-//                if selectedPhotoIndex > 0 {
-//                    fullScreenImageView.image = photos[selectedPhotoIndex - 1]
-//                    selectedPhotoIndex -= 1
-//                }
-//            }
-//            print("ended")
-//        default:
-//            print("default")
-//        }
-//    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

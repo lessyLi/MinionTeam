@@ -7,8 +7,6 @@
 
 import UIKit
 
-//private let reuseIdentifier = "Cell"
-
 class PhotoCollectionViewController: UICollectionViewController {
     
     let cellsInRow = 2
@@ -18,7 +16,11 @@ class PhotoCollectionViewController: UICollectionViewController {
     let fullScreenSegue = "fullScreenSegue"
     
     var photoImageView: UIImageView!
-    var photos = [UIImage]()
+    var photos: [UIImage] = [] {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
     
     var selectedFriend: Friend?
     
@@ -28,6 +30,14 @@ class PhotoCollectionViewController: UICollectionViewController {
         collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifierPhotoCell)
                 
         title = selectedFriend?.name
+        
+        ServiceVK().loadVKData(method: .photos) { [weak self] photos in
+            let photoArray = photos as? [Photo] ?? []
+            for item in photoArray {
+                self?.photos.append(item.photo)
+            }
+        }
+
     }
     
     // MARK: UICollectionViewDataSource
@@ -44,7 +54,6 @@ class PhotoCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifierPhotoCell, for: indexPath) as? CustomCollectionViewCell else {preconditionFailure("Error")}
         
         cell.configure(image: photos[indexPath.item])
-//        cell.goToAnotherViewController(identifier: "FullScreenVC")
         return cell
     }
     

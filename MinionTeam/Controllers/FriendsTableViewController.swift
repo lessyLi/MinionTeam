@@ -11,11 +11,48 @@ class FriendsTableViewController: UITableViewController {
     
     let reuseIdentifierCustom = "reuseIdentifierCustom"
     let fromFriendsToGallerySegue = "fromFriendsToGallery"
+        
+    var friendsArray: [Friend] = [] {
+        didSet {
+            for friend in friendsArray {
+                let friendKey = String(friend.name.prefix(1))
+                if var friendValues = sortedFriendsArray[friendKey] {
+                    friendValues.append(friend)
+                    sortedFriendsArray[friendKey] = friendValues
+                } else {
+                    sortedFriendsArray[friendKey] = [friend]
+                }
+            }
+            friendsSectionTitles = [String](sortedFriendsArray.keys)
+            friendsSectionTitles = friendsSectionTitles.sorted(by: { $0 < $1 })
+            
+            self.tableView.reloadData()
+        }
+    }
+    var sortedFriendsArray = [String: [Friend]]()
+    var friendsSectionTitles = [String]()
+     
+    // MARK: - life circle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+       // fillFriendsArray()
+        
+        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
+        
+        title = "My Friends"
+        
+        ServiceVK().loadVKData(method: .friends) { [weak self] friendsArray in
+            self?.friendsArray = friendsArray as? [Friend] ?? []
+        }
+        
+//        friendsArray = Friends().items
+//        sortedFriendsArray = sort(friends: friendsArray)
+        
+    }
     
-//    let friendButton: UIButton! = nil
-    
-    var friendsArray = [Friend]()
-    
+    // MARK: - Filling array method
+        /*
     func fillFriendsArray() {
         let friend1 = Friend(name: "Bob", avatar: UIImage(named: "1.-bob")!, photos: [UIImage(named: "1.-bob")!, UIImage(named: "realists")!, UIImage(named: "selfie")!])
         let friend2 = Friend(name: "Carl", avatar: UIImage(named: "2.-carl")!, photos: [UIImage(named: "2.-carl")!, UIImage(named: "11.-larry")!, UIImage(named: "12.-mark")!, UIImage(named: "13.-mike")!, UIImage(named: "14.-norbert")!])
@@ -39,21 +76,9 @@ class FriendsTableViewController: UITableViewController {
         friendsArray.append(friend9)
         friendsArray.append(friend10)
     }
+         */
     
-    var sortedFriendsArray = [Character: [Friend]]()
-        
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        fillFriendsArray()
-        
-        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
-        
-        title = "My Friends"
-        
-        sortedFriendsArray = sort(friends: friendsArray)
-    }
-    
+    // MARK: - Sorting method
     private func sort(friends: [Friend]) -> [Character: [Friend]] {
         var friendsDictionary = [Character: [Friend]]()
         
@@ -69,6 +94,7 @@ class FriendsTableViewController: UITableViewController {
         return friendsDictionary
     }
     
+    // MARK: - Searching method
     private func findSelectedFriend(indexPath: IndexPath) -> Friend {
         let firstChar = sortedFriendsArray.keys.sorted()[indexPath.section]
         let friendsInSection = sortedFriendsArray[firstChar]!
@@ -76,27 +102,26 @@ class FriendsTableViewController: UITableViewController {
         return selectedFriend
     }
     
+    // MARK: - Segue prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == fromFriendsToGallerySegue,
            let destinationVC = segue.destination as? PhotoCollectionViewController,
-//           let sender = sender as? self.friendButton,
            let indexPath = tableView.indexPathForSelectedRow {
             let selectedFriend = findSelectedFriend(indexPath: indexPath)
-            destinationVC.photos = selectedFriend.photos
+           // destinationVC.photos = selectedFriend.photos
             destinationVC.selectedFriend = selectedFriend
         }
     }
 
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return sortedFriendsArray.keys.count
+        sortedFriendsArray.keys.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         let sortedKeys = sortedFriendsArray.keys.sorted()
         let friendsInSection = sortedFriendsArray[sortedKeys[section]]?.count ?? 0
         
