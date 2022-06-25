@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CustomTableViewCell: UITableViewCell {
     
@@ -16,17 +17,22 @@ class CustomTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        avatarImageView.kf.cancelDownloadTask()
         avatarImageView.image = nil
         titleLabel.text = nil
     }
     
     func configure(friend: Friend) {
-        avatarImageView.image = friend.avatar
-        titleLabel.text = friend.name
+        let url = URL(string: friend.userPhotoData)
+        avatarImageView.kf.setImage(with: url)
+//        avatarImageView.image = friend.avatar
+        titleLabel.text = friend.name + " " + friend.lastName
     }
     
     func configure(group: Group) {
-        avatarImageView.image = group.avatar
+        let url = URL(string: group.groupPhotoData)
+        avatarImageView.kf.setImage(with: url)
+//        avatarImageView.image = group.avatar
         titleLabel.text = group.name
     }
 

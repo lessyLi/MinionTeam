@@ -27,6 +27,11 @@ class WKViewController: UIViewController {
             performSegue(withIdentifier: "webViewToLoginSegue", sender: nil)
         }
     }
+    var userID: Int = 0 {
+        didSet {
+            session.myID = userID
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +74,7 @@ extension WKViewController: WKNavigationDelegate {
         print(token!)
         print(userID!)
         tokenString = token!
+        self.userID = Int(userID!)!
             //    serviceVK.loadVKData(load: .friends) { [weak self] friendsData in
         //    self?.friendsData = friendsData
 //            webView.reload()

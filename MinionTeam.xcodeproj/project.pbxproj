@@ -44,7 +44,7 @@
 		FAF8E3D428638E9A00BBFFB0 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8E3D328638E9A00BBFFB0 /* Photo.swift */; };
 		FAF8E3D628638EA400BBFFB0 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8E3D528638EA400BBFFB0 /* Photos.swift */; };
 		FAF8E3D82864344000BBFFB0 /* PhotoSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8E3D72864344000BBFFB0 /* PhotoSizes.swift */; };
-		FAF8E3DC286495A800BBFFB0 /* RequestItemVK.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8E3DB286495A800BBFFB0 /* RequestItemVK.swift */; };
+		FAF8E3DF2865EBCC00BBFFB0 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FAF8E3DE2865EBCC00BBFFB0 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,7 +89,7 @@
 		FAF8E3D328638E9A00BBFFB0 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		FAF8E3D528638EA400BBFFB0 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		FAF8E3D72864344000BBFFB0 /* PhotoSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSizes.swift; sourceTree = "<group>"; };
-		FAF8E3DB286495A800BBFFB0 /* RequestItemVK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestItemVK.swift; sourceTree = "<group>"; };
+		FAF8E3DE2865EBCC00BBFFB0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +126,6 @@
 			children = (
 				FADDC9E828565E19005DFF3A /* Session.swift */,
 				FA2CD166285B5F16005FE96A /* ServiceVK.swift */,
-				FAF8E3DB286495A800BBFFB0 /* RequestItemVK.swift */,
 				FA0DED76285F59A3002FB32A /* Friends.swift */,
 				FA6C0D63282EBB910052543F /* Friend.swift */,
 				FAF8E3D128638D8800BBFFB0 /* Groups.swift */,
@@ -179,6 +178,7 @@
 		FAC376E6281FEFA10086732E = {
 			isa = PBXGroup;
 			children = (
+				FAF8E3DE2865EBCC00BBFFB0 /* .gitignore */,
 				FAC376F1281FEFA10086732E /* MinionTeam */,
 				FAC376F0281FEFA10086732E /* Products */,
 				80CE9A12B7823A5A302C631D /* Pods */,
@@ -300,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAF8E3DF2865EBCC00BBFFB0 /* .gitignore in Resources */,
 				FAED84192832BD9500219792 /* LikeCounterView.xib in Resources */,
 				FAC376FF281FEFA30086732E /* LaunchScreen.storyboard in Resources */,
 				FAC376FC281FEFA30086732E /* Assets.xcassets in Resources */,
@@ -386,7 +387,6 @@
 				FAED841C283380B700219792 /* CanvasViewController.swift in Sources */,
 				FADDC9E928565E19005DFF3A /* Session.swift in Sources */,
 				FACEE1F5283AAF7300B2D9BA /* NewsTableViewCell.swift in Sources */,
-				FAF8E3DC286495A800BBFFB0 /* RequestItemVK.swift in Sources */,
 				FA6C0D64282EBB910052543F /* Friend.swift in Sources */,
 				FACEE1F2283AAF2F00B2D9BA /* NewsViewController.swift in Sources */,
 			);

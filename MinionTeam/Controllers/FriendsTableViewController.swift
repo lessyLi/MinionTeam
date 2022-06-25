@@ -15,7 +15,7 @@ class FriendsTableViewController: UITableViewController {
     var friendsArray: [Friend] = [] {
         didSet {
             for friend in friendsArray {
-                let friendKey = String(friend.name.prefix(1))
+                let friendKey = String(friend.lastName.prefix(1))
                 if var friendValues = sortedFriendsArray[friendKey] {
                     friendValues.append(friend)
                     sortedFriendsArray[friendKey] = friendValues
@@ -41,49 +41,18 @@ class FriendsTableViewController: UITableViewController {
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
         
         title = "My Friends"
-        
-        ServiceVK().loadVKData(method: .friends) { [weak self] friendsArray in
-            self?.friendsArray = friendsArray as? [Friend] ?? []
+
+        ServiceVK().loadFriends { friendsArray in
+            self.friendsArray = friendsArray
         }
-        
-//        friendsArray = Friends().items
-//        sortedFriendsArray = sort(friends: friendsArray)
-        
     }
-    
-    // MARK: - Filling array method
-        /*
-    func fillFriendsArray() {
-        let friend1 = Friend(name: "Bob", avatar: UIImage(named: "1.-bob")!, photos: [UIImage(named: "1.-bob")!, UIImage(named: "realists")!, UIImage(named: "selfie")!])
-        let friend2 = Friend(name: "Carl", avatar: UIImage(named: "2.-carl")!, photos: [UIImage(named: "2.-carl")!, UIImage(named: "11.-larry")!, UIImage(named: "12.-mark")!, UIImage(named: "13.-mike")!, UIImage(named: "14.-norbert")!])
-        let friend3 = Friend(name: "Darwin", avatar: UIImage(named: "3.-darwin")!, photos: [UIImage(named: "3.-darwin")!])
-        let friend4 = Friend(name: "Dave", avatar: UIImage(named: "4.-dave")!, photos: [UIImage(named: "4.-dave")!])
-        let friend5 = Friend(name: "Phill", avatar: UIImage(named: "16.-phill")!, photos: [UIImage(named: "16.-phill")!])
-        let friend6 = Friend(name: "Stuart", avatar: UIImage(named: "18.-stuart")!, photos: [UIImage(named: "18.-stuart")!])
-        let friend7 = Friend(name: "Tim", avatar: UIImage(named: "19.-tim")!, photos: [UIImage(named: "19.-tim")!])
-        let friend8 = Friend(name: "Kevin", avatar: UIImage(named: "8.-kevin")!, photos: [UIImage(named: "8.-kevin")!])
-        let friend9 = Friend(name: "Jorge", avatar: UIImage(named: "23.-jorge")!, photos: [UIImage(named: "23.-jorge")!])
-        let friend10 = Friend(name: "Donny", avatar: UIImage(named: "24.-donny")!, photos: [UIImage(named: "24.-donny")!])
-        
-        friendsArray.append(friend1)
-        friendsArray.append(friend2)
-        friendsArray.append(friend3)
-        friendsArray.append(friend4)
-        friendsArray.append(friend5)
-        friendsArray.append(friend6)
-        friendsArray.append(friend7)
-        friendsArray.append(friend8)
-        friendsArray.append(friend9)
-        friendsArray.append(friend10)
-    }
-         */
     
     // MARK: - Sorting method
     private func sort(friends: [Friend]) -> [Character: [Friend]] {
         var friendsDictionary = [Character: [Friend]]()
         
         friends.forEach { friend in
-            guard let firstChar = friend.name.first else {return}
+            guard let firstChar = friend.lastName.first else {return}
             
             if friendsDictionary.keys.contains(firstChar) {
                 friendsDictionary[firstChar]?.append(friend)
@@ -114,7 +83,6 @@ class FriendsTableViewController: UITableViewController {
         }
     }
 
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -143,10 +111,38 @@ class FriendsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: fromFriendsToGallerySegue) { self.findSelectedFriend(indexPath: indexPath)}
+        performSegue(withIdentifier: fromFriendsToGallerySegue) { self.findSelectedFriend(indexPath: indexPath)
+            
+        }
     }
     
 }
 
 
+// MARK: - Filling array method
+    /*
+func fillFriendsArray() {
+    let friend1 = Friend(name: "Bob", avatar: UIImage(named: "1.-bob")!, photos: [UIImage(named: "1.-bob")!, UIImage(named: "realists")!, UIImage(named: "selfie")!])
+    let friend2 = Friend(name: "Carl", avatar: UIImage(named: "2.-carl")!, photos: [UIImage(named: "2.-carl")!, UIImage(named: "11.-larry")!, UIImage(named: "12.-mark")!, UIImage(named: "13.-mike")!, UIImage(named: "14.-norbert")!])
+    let friend3 = Friend(name: "Darwin", avatar: UIImage(named: "3.-darwin")!, photos: [UIImage(named: "3.-darwin")!])
+    let friend4 = Friend(name: "Dave", avatar: UIImage(named: "4.-dave")!, photos: [UIImage(named: "4.-dave")!])
+    let friend5 = Friend(name: "Phill", avatar: UIImage(named: "16.-phill")!, photos: [UIImage(named: "16.-phill")!])
+    let friend6 = Friend(name: "Stuart", avatar: UIImage(named: "18.-stuart")!, photos: [UIImage(named: "18.-stuart")!])
+    let friend7 = Friend(name: "Tim", avatar: UIImage(named: "19.-tim")!, photos: [UIImage(named: "19.-tim")!])
+    let friend8 = Friend(name: "Kevin", avatar: UIImage(named: "8.-kevin")!, photos: [UIImage(named: "8.-kevin")!])
+    let friend9 = Friend(name: "Jorge", avatar: UIImage(named: "23.-jorge")!, photos: [UIImage(named: "23.-jorge")!])
+    let friend10 = Friend(name: "Donny", avatar: UIImage(named: "24.-donny")!, photos: [UIImage(named: "24.-donny")!])
+    
+    friendsArray.append(friend1)
+    friendsArray.append(friend2)
+    friendsArray.append(friend3)
+    friendsArray.append(friend4)
+    friendsArray.append(friend5)
+    friendsArray.append(friend6)
+    friendsArray.append(friend7)
+    friendsArray.append(friend8)
+    friendsArray.append(friend9)
+    friendsArray.append(friend10)
+}
+     */
 

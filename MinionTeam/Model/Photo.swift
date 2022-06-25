@@ -7,37 +7,30 @@
 
 import Foundation
 import UIKit
+import RealmSwift
+import Kingfisher
 
-class Photo: Item, Decodable {
+class Photo: Object, Decodable {
 
-    var description: String = ""
-    var type: String = ""
-    var url: String = ""
-    var photo: UIImage = #imageLiteral(resourceName: "groups")
+    @Persisted var photoDescription: String = ""
+    @Persisted var type: String = ""
+    @Persisted var collectionPhotoData: String = ""
+    var friendPhoto: UIImage = #imageLiteral(resourceName: "groups")
     
     enum CodingKeys: String, CodingKey {
         case sizes
-        case description = "text"
+        case photoDescription = "text"
     }
     enum SizesCodingKeys: String, CodingKey {
         case type
-        case url
+        case collectionPhotoData = "url"
     }
-    
-//    convenience required init(from decoder: Decoder) throws {
-//        self.init()
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//        self.description = try container.decode(String.self, forKey: .description)
-//        let sizes = try container.nestedContainer(keyedBy: SizesCodingKeys.self, forKey: .sizes)
-//        self.type = try sizes.decode(String.self, forKey: .type)
-//        self.url = try sizes.decode(String.self, forKey: .url)
-//    }
     
     convenience required init(from decoder: Decoder) throws {
         self.init()
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.description = try container.decode(String.self, forKey: .description)
+        self.photoDescription = try container.decode(String.self, forKey: .photoDescription)
         
         var sizeContainer = try container.nestedUnkeyedContainer(forKey: .sizes)
 
@@ -48,6 +41,7 @@ class Photo: Item, Decodable {
         
         let sizes = try sizeContainer.nestedContainer(keyedBy: SizesCodingKeys.self)
         self.type = try sizes.decode(String.self, forKey: .type)
-        self.url = try sizes.decode(String.self, forKey: .url)
+        self.collectionPhotoData = try sizes.decode(String.self, forKey: .collectionPhotoData)
     }
+    
 }

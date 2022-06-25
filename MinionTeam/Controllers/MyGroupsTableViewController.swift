@@ -51,8 +51,8 @@ class MyGroupsTableViewController: UITableViewController, UISearchBarDelegate {
         searchBar.delegate = self
         filteredMyGroupsArray = myGroupsArray
         
-        ServiceVK().loadVKData(method: .groups) { myGroupsArray in
-            self.myGroupsArray = myGroupsArray as? [Group] ?? []
+        ServiceVK().loadGroups { groupsArray in
+            self.myGroupsArray = groupsArray
         }
     }
     // MARK: - Unwind Segue
