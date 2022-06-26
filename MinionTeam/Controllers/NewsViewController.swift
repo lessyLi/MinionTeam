@@ -16,31 +16,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     var newsImages = [UIImage]()
     var newsTexts = [String]()
     
-    private func fillNewsImages() {
-        let nakedImage = UIImage(named: "naked")!
-        let scooterImage = UIImage(named: "scooter")!
-        let selfieImage = UIImage(named: "selfie")!
-        
-        newsImages.append(nakedImage)
-        newsImages.append(scooterImage)
-        newsImages.append(selfieImage)
-    }
-    private func fillNewsTexts() {
-        let nakedText = """
-Torrential rains have been pouring down all week. The minions have no dry clothes anymore.
-"""
-        let scooterText = """
-Getting an adult electric scooter could be for various reasons. They are easy to learn and perfect, easy to assemble and offers great mobility. Other than that, these fun rides are perfect for any age.
-"""
-        let selfieText = """
-Download the perfect selfie pictures. Find over 100+ of the best free selfie images. Free for commercial use No attribution required Copyright-free.
-"""
-        
-        newsTexts.append(nakedText)
-        newsTexts.append(scooterText)
-        newsTexts.append(selfieText)
-    }
-    
+    // MARK: - Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,6 +28,33 @@ Download the perfect selfie pictures. Find over 100+ of the best free selfie ima
         title = "News"
     }
     
+    // MARK: - Filling methods
+    private func fillNewsImages() {
+        let nakedImage = UIImage(named: "naked")!
+        let scooterImage = UIImage(named: "scooter")!
+        let selfieImage = UIImage(named: "selfie")!
+        
+        newsImages.append(nakedImage)
+        newsImages.append(scooterImage)
+        newsImages.append(selfieImage)
+    }
+    
+    private func fillNewsTexts() {
+        let nakedText = """
+Torrential rains have been pouring down all week. The minions have no dry clothes anymore.
+"""
+        let scooterText = """
+Getting an adult electric scooter could be for various reasons. They are easy to learn and perfect, easy to assemble and offers great mobility. Other than that, these fun rides are perfect for any age.
+"""
+        let selfieText = """
+Download the perfect selfie pictures. Find over 100+ of the best free selfie images. Free for commercial use No attribution required Copyright-free.
+"""
+        newsTexts.append(nakedText)
+        newsTexts.append(scooterText)
+        newsTexts.append(selfieText)
+    }
+    
+    // MARK: - Table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         newsImages.count
     }

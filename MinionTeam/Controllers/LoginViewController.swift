@@ -26,6 +26,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapFunction))
         self.view.addGestureRecognizer(tapRecognizer)
         
@@ -35,6 +36,7 @@ class LoginViewController: UIViewController {
         loadingView.isHidden = true
         
         loginButton.layer.cornerRadius = 10
+         
     }
     
     @objc func tapFunction() {
@@ -72,6 +74,9 @@ class LoginViewController: UIViewController {
         
         loadingView.isHidden = false
         showLoadingCircle()
+            // self.performSegue(withIdentifier: "logInToVKSegue", sender: nil)
+      //  self.performSegue(withIdentifier: "logInSegue", sender: nil)
+        
     }
 
     func showLoadingCircle() {
@@ -138,8 +143,10 @@ class LoginViewController: UIViewController {
             }
 
         } completion: { _ in
-            self.showLoadingCircle()
+           // self.showLoadingCircle()
             self.performSegue(withIdentifier: "logInSegue", sender: nil)
+            //  self.performSegue(withIdentifier: "logInToVKSegue", sender: nil)
+
         }
 
     }

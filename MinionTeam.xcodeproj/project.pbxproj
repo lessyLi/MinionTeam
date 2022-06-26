@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3FB841273FFE09DC52F124C0 /* Pods_MinionTeam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E846DB87AF0A291C770B98A /* Pods_MinionTeam.framework */; };
+		FA0DED77285F59A3002FB32A /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DED76285F59A3002FB32A /* Friends.swift */; };
 		FA12DC7D28227D26003C612B /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA12DC7C28227D26003C612B /* FriendsTableViewController.swift */; };
 		FA12DC7F28227DD1003C612B /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA12DC7E28227DD1003C612B /* PhotoCollectionViewController.swift */; };
 		FA12DC8128227E52003C612B /* MyGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA12DC8028227E52003C612B /* MyGroupsTableViewController.swift */; };
@@ -39,12 +40,18 @@
 		FAED84192832BD9500219792 /* LikeCounterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAED84182832BD9500219792 /* LikeCounterView.xib */; };
 		FAED841C283380B700219792 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED841B283380B700219792 /* CanvasViewController.swift */; };
 		FAED841F2833819100219792 /* DrawingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED841E2833819100219792 /* DrawingControl.swift */; };
+		FAF8E3D228638D8800BBFFB0 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8E3D128638D8800BBFFB0 /* Groups.swift */; };
+		FAF8E3D428638E9A00BBFFB0 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8E3D328638E9A00BBFFB0 /* Photo.swift */; };
+		FAF8E3D628638EA400BBFFB0 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8E3D528638EA400BBFFB0 /* Photos.swift */; };
+		FAF8E3D82864344000BBFFB0 /* PhotoSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8E3D72864344000BBFFB0 /* PhotoSizes.swift */; };
+		FAF8E3DF2865EBCC00BBFFB0 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FAF8E3DE2865EBCC00BBFFB0 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3DE0B8B3C3A6B93B7F306D98 /* Pods-MinionTeam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinionTeam.debug.xcconfig"; path = "Target Support Files/Pods-MinionTeam/Pods-MinionTeam.debug.xcconfig"; sourceTree = "<group>"; };
 		9E846DB87AF0A291C770B98A /* Pods_MinionTeam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MinionTeam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A19DDAAB43EEEAA2B7FF13 /* Pods-MinionTeam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinionTeam.release.xcconfig"; path = "Target Support Files/Pods-MinionTeam/Pods-MinionTeam.release.xcconfig"; sourceTree = "<group>"; };
+		FA0DED76285F59A3002FB32A /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		FA12DC7C28227D26003C612B /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		FA12DC7E28227DD1003C612B /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
 		FA12DC8028227E52003C612B /* MyGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsTableViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +85,11 @@
 		FAED84182832BD9500219792 /* LikeCounterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeCounterView.xib; sourceTree = "<group>"; };
 		FAED841B283380B700219792 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
 		FAED841E2833819100219792 /* DrawingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingControl.swift; sourceTree = "<group>"; };
+		FAF8E3D128638D8800BBFFB0 /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
+		FAF8E3D328638E9A00BBFFB0 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		FAF8E3D528638EA400BBFFB0 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		FAF8E3D72864344000BBFFB0 /* PhotoSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSizes.swift; sourceTree = "<group>"; };
+		FAF8E3DE2865EBCC00BBFFB0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,8 +126,13 @@
 			children = (
 				FADDC9E828565E19005DFF3A /* Session.swift */,
 				FA2CD166285B5F16005FE96A /* ServiceVK.swift */,
+				FA0DED76285F59A3002FB32A /* Friends.swift */,
 				FA6C0D63282EBB910052543F /* Friend.swift */,
+				FAF8E3D128638D8800BBFFB0 /* Groups.swift */,
 				FA6C0D65282EBB9F0052543F /* Group.swift */,
+				FAF8E3D528638EA400BBFFB0 /* Photos.swift */,
+				FAF8E3D72864344000BBFFB0 /* PhotoSizes.swift */,
+				FAF8E3D328638E9A00BBFFB0 /* Photo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -124,8 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				FAEC2429284D22AC0020BF2B /* CustomNavigationController.swift */,
-				FAD094062858AA4B0092AF1C /* WKViewController.swift */,
 				FAC376F6281FEFA10086732E /* LoginViewController.swift */,
+				FAD094062858AA4B0092AF1C /* WKViewController.swift */,
 				FA12DC7C28227D26003C612B /* FriendsTableViewController.swift */,
 				FA98377B282FF42700EBA4FF /* PhotoCollection */,
 				FA12DC8028227E52003C612B /* MyGroupsTableViewController.swift */,
@@ -161,6 +178,7 @@
 		FAC376E6281FEFA10086732E = {
 			isa = PBXGroup;
 			children = (
+				FAF8E3DE2865EBCC00BBFFB0 /* .gitignore */,
 				FAC376F1281FEFA10086732E /* MinionTeam */,
 				FAC376F0281FEFA10086732E /* Products */,
 				80CE9A12B7823A5A302C631D /* Pods */,
@@ -282,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAF8E3DF2865EBCC00BBFFB0 /* .gitignore in Resources */,
 				FAED84192832BD9500219792 /* LikeCounterView.xib in Resources */,
 				FAC376FF281FEFA30086732E /* LaunchScreen.storyboard in Resources */,
 				FAC376FC281FEFA30086732E /* Assets.xcassets in Resources */,
@@ -344,11 +363,13 @@
 				FA6C0D66282EBB9F0052543F /* Group.swift in Sources */,
 				FA12DC7F28227DD1003C612B /* PhotoCollectionViewController.swift in Sources */,
 				FA12DC8128227E52003C612B /* MyGroupsTableViewController.swift in Sources */,
+				FAF8E3D428638E9A00BBFFB0 /* Photo.swift in Sources */,
 				FAEC2426284D1A360020BF2B /* PushAnimator.swift in Sources */,
 				FA2CD167285B5F16005FE96A /* ServiceVK.swift in Sources */,
 				FAED84172832BD7A00219792 /* LikeCounterView.swift in Sources */,
 				FAD094072858AA4B0092AF1C /* WKViewController.swift in Sources */,
 				FAC376F7281FEFA10086732E /* LoginViewController.swift in Sources */,
+				FA0DED77285F59A3002FB32A /* Friends.swift in Sources */,
 				FAEC242A284D22AC0020BF2B /* CustomNavigationController.swift in Sources */,
 				FA12DC8328227E75003C612B /* MoreGroupsTableViewController.swift in Sources */,
 				FAC376F3281FEFA10086732E /* AppDelegate.swift in Sources */,
@@ -357,7 +378,10 @@
 				FA12DC7D28227D26003C612B /* FriendsTableViewController.swift in Sources */,
 				FAC376F5281FEFA10086732E /* SceneDelegate.swift in Sources */,
 				FA98377A282FF40B00EBA4FF /* ExtentionPhotoCollectionVC.swift in Sources */,
+				FAF8E3D228638D8800BBFFB0 /* Groups.swift in Sources */,
 				FAED841F2833819100219792 /* DrawingControl.swift in Sources */,
+				FAF8E3D82864344000BBFFB0 /* PhotoSizes.swift in Sources */,
+				FAF8E3D628638EA400BBFFB0 /* Photos.swift in Sources */,
 				FAEC2428284D1F490020BF2B /* PopAnimator.swift in Sources */,
 				FADB266128427BA500528D3F /* FullScreenVC.swift in Sources */,
 				FAED841C283380B700219792 /* CanvasViewController.swift in Sources */,

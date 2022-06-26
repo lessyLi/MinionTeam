@@ -6,14 +6,17 @@
 //
 
 import UIKit
+import Kingfisher
 
 class FullScreenVC: UIViewController {
 
     @IBOutlet var fullScreenImageView: UIImageView!
     
-    var selectedPhoto: UIImage!
+    var selectedPhotoData: String!
+//    var selectedPhoto: UIImage!
     var selectedPhotoIndex: Int!
-    var photos = [UIImage]()
+    var photos = [Photo]()
+    var friendImages = [UIImage]()
     
     private var isLeftSwipe = false
     private var isRightSwipe = false
@@ -21,27 +24,33 @@ class FullScreenVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fullScreenImageView.image = selectedPhoto
+//        fullScreenImageView.image = selectedPhoto
+        configureFullScreen()
         
         let swipe = UIPanGestureRecognizer(target: self, action: #selector(swipePhoto(_ :)))
         fullScreenImageView.addGestureRecognizer(swipe)
         fullScreenImageView.isUserInteractionEnabled = true
     }
     
+    func configureFullScreen() {
+        let url = URL(string: selectedPhotoData)
+        fullScreenImageView.kf.setImage(with: url)
+//        photoImageView.image = image
+    }
+    
     @objc func swipePhoto(_ recognizer: UIPanGestureRecognizer) {
-        
+
         switch recognizer.state {
-        
+
         case .began:
-   
+
             isLeftSwipe = false
             isRightSwipe = false
-            
+
             print("began")
-            
+
         case .changed:
             let translation = recognizer.translation(in: self.view)
-            print(translation)
 
             if translation.x < 0 {
                 isLeftSwipe = true
@@ -49,15 +58,15 @@ class FullScreenVC: UIViewController {
                 isRightSwipe = true
             }
             print("changed")
-            
+
         case .ended:
             if isLeftSwipe {
-                if selectedPhotoIndex < photos.count - 1 {
+                if selectedPhotoIndex < friendImages.count - 1 {
                     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn) {
                         self.fullScreenImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
                         self.fullScreenImageView.alpha = 0
                     } completion: { _ in
-                        self.fullScreenImageView.image = self.photos[self.selectedPhotoIndex + 1]
+                        self.fullScreenImageView.image = self.friendImages[self.selectedPhotoIndex + 1]
                         self.selectedPhotoIndex += 1
                         UIView.animate(withDuration: 0.4, delay: 0.1, options: .curveEaseOut) {
                             self.fullScreenImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
@@ -72,7 +81,7 @@ class FullScreenVC: UIViewController {
                         self.fullScreenImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
                         self.fullScreenImageView.alpha = 0
                     } completion: { _ in
-                        self.fullScreenImageView.image = self.photos[self.selectedPhotoIndex - 1]
+                        self.fullScreenImageView.image = self.friendImages[self.selectedPhotoIndex - 1]
                         self.selectedPhotoIndex -= 1
                         UIView.animate(withDuration: 0.4, delay: 0.1, options: .curveEaseOut) {
                             self.fullScreenImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
@@ -88,56 +97,5 @@ class FullScreenVC: UIViewController {
             print("default")
         }
     }
-    
-    
-//    @objc func swipePhoto(_ recognizer: UIPanGestureRecognizer) {
-//
-//        switch recognizer.state {
-//
-//        case .began:
-//
-//            isLeftSwipe = false
-//            isRightSwipe = false
-//
-//            print("began")
-//
-//        case .changed:
-//            let translation = recognizer.translation(in: self.view)
-//            print(translation)
-//
-//            if translation.x < 0 {
-//                isLeftSwipe = true
-//            } else {
-//                isRightSwipe = true
-//            }
-//            print("changed")
-//
-//        case .ended:
-//            if isLeftSwipe {
-//                if selectedPhotoIndex < photos.count - 1 {
-//                    fullScreenImageView.image = photos[selectedPhotoIndex + 1]
-//                    selectedPhotoIndex += 1
-//                }
-//            } else {
-//                if selectedPhotoIndex > 0 {
-//                    fullScreenImageView.image = photos[selectedPhotoIndex - 1]
-//                    selectedPhotoIndex -= 1
-//                }
-//            }
-//            print("ended")
-//        default:
-//            print("default")
-//        }
-//    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

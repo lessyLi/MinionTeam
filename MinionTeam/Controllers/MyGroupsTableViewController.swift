@@ -15,15 +15,20 @@ class MyGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     let reuseIdentifierCustom = "reuseIdentifierCustom"
     let fromAllGroupsToMyGroupsSegue = "fromAllGroupsToMyGroups"
 
-    var myGroupsArray = [Group]()
+    var myGroupsArray: [Group] = [] {
+        didSet {
+            filteredMyGroupsArray = myGroupsArray
+            tableView.reloadData()
+        }
+    }
     var filteredMyGroupsArray: [Group]!
     
-    func fillMyGroupsArray() {
-        let group1 = Group(name: "Pessimists Party", avatar: UIImage(named: "pessimists")!)
-        let group2 = Group(name: "Optimists Party", avatar: UIImage(named: "optimists")!)
-        myGroupsArray.append(group1)
-        myGroupsArray.append(group2)
-    }
+//    func fillMyGroupsArray() {
+//        let group1 = Group(name: "Pessimists Party", avatar: UIImage(named: "pessimists")!)
+//        let group2 = Group(name: "Optimists Party", avatar: UIImage(named: "optimists")!)
+//        myGroupsArray.append(group1)
+//        myGroupsArray.append(group2)
+//    }
     
     @IBAction func findMoreGroupsButton(_ sender: UIBarButtonItem) {
     }
@@ -39,14 +44,17 @@ class MyGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fillMyGroupsArray()
+        // fillMyGroupsArray()
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
         title = "My Groups"
         
         searchBar.delegate = self
         filteredMyGroupsArray = myGroupsArray
+        
+        ServiceVK().loadGroups { groupsArray in
+            self.myGroupsArray = groupsArray
+        }
     }
-
     // MARK: - Unwind Segue
     
     @IBAction func unwindSegueToMyGroup(segue: UIStoryboardSegue) {

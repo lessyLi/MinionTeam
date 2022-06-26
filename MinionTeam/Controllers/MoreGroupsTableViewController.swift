@@ -19,26 +19,26 @@ class MoreGroupsTableViewController: UITableViewController, UISearchBarDelegate 
     
     var moreGroupsArray = [Group]()
     var filteredMoreGroupsArray = [Group]()
-    
-    func fillMoreGroupsArray() {
-        let group1 = Group(name: "Beautiful hair Club", avatar: UIImage(named: "hair")!)
-        let group2 = Group(name: "Scooter lovers", avatar: UIImage(named: "scooter")!)
-        let group3 = Group(name: "Selfie maniacs", avatar: UIImage(named: "selfie")!)
-        let group4 = Group(name: "Pessimists Party", avatar: UIImage(named: "pessimists")!)
-        let group5 = Group(name: "Optimists Party", avatar: UIImage(named: "optimists")!)
-        let group6 = Group(name: "Realists Party", avatar: UIImage(named: "realists")!)
-        moreGroupsArray.append(group1)
-        moreGroupsArray.append(group2)
-        moreGroupsArray.append(group3)
-        moreGroupsArray.append(group4)
-        moreGroupsArray.append(group5)
-        moreGroupsArray.append(group6)
-    }
+//    
+//    func fillMoreGroupsArray() {
+//        let group1 = Group(name: "Beautiful hair Club", avatar: UIImage(named: "hair")!)
+//        let group2 = Group(name: "Scooter lovers", avatar: UIImage(named: "scooter")!)
+//        let group3 = Group(name: "Selfie maniacs", avatar: UIImage(named: "selfie")!)
+//        let group4 = Group(name: "Pessimists Party", avatar: UIImage(named: "pessimists")!)
+//        let group5 = Group(name: "Optimists Party", avatar: UIImage(named: "optimists")!)
+//        let group6 = Group(name: "Realists Party", avatar: UIImage(named: "realists")!)
+//        moreGroupsArray.append(group1)
+//        moreGroupsArray.append(group2)
+//        moreGroupsArray.append(group3)
+//        moreGroupsArray.append(group4)
+//        moreGroupsArray.append(group5)
+//        moreGroupsArray.append(group6)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fillMoreGroupsArray()
+//        fillMoreGroupsArray()
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
         title = "All Groups"
         

@@ -17,11 +17,6 @@ extension PhotoCollectionViewController: UICollectionViewDelegateFlowLayout {
         let widthCell = collectionViewWidth / CGFloat(cellsInRow)
         let heightCell = widthCell
         
-//        let collectionViewWidth = collectionView.bounds.width
-//        let whiteSpace = CGFloat(10)
-//        let lineCountCell = CGFloat(3)
-//        let cellWidth = collectionViewWidth / lineCountCell - whiteSpace
-        
         return CGSize(width: widthCell - spacing, height: heightCell - offset * 2)
     }
 }
