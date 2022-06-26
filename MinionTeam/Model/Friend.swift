@@ -6,15 +6,16 @@
 //
 
 import UIKit
+import RealmSwift
+import Kingfisher
 
-class Friend: Item, Decodable {
+class Friend: Object, Decodable {
 
-    var userID: Int = 0
-    var name: String = ""
-    var lastName: String = ""
-    var userPhotoData: String = "" //url photos
+    @Persisted var userID: Int = 0
+    @Persisted var name: String = ""
+    @Persisted var lastName: String = ""
+    @Persisted var userPhotoData: String = ""
     var avatar: UIImage = #imageLiteral(resourceName: "16.-phill") //вот это потом превратится в фото из стрингов avatar
-//    var photos: UIImage = #imageLiteral(resourceName: "23.-jorge")
     
     enum CodingKeys: String, CodingKey {
         case userID = "id"
@@ -31,6 +32,7 @@ class Friend: Item, Decodable {
         self.lastName = try container.decode(String.self, forKey: .lastName)
         self.userPhotoData = try container.decode(String.self, forKey: .userPhotoData)
     }
+    
 }
 
 //struct Friend {

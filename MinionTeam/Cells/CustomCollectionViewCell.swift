@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CustomCollectionViewCell: UICollectionViewCell {
 
@@ -20,13 +21,16 @@ class CustomCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        photoImageView.kf.cancelDownloadTask()
         photoImageView.image = nil
         isLiked = false
         heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
     }
     
-    func configure(image: UIImage) {
-        photoImageView.image = image
+    func configure(photo: Photo) {
+        let url = URL(string: photo.collectionPhotoData)
+        photoImageView.kf.setImage(with: url)
+//        photoImageView.image = image
     }
     
     override func awakeFromNib() {

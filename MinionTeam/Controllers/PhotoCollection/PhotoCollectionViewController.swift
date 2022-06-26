@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PhotoCollectionViewController: UICollectionViewController {
     
@@ -15,14 +16,17 @@ class PhotoCollectionViewController: UICollectionViewController {
     let reuseIdentifierPhotoCell = "reuseIdentifierPhotoCell"
     let fullScreenSegue = "fullScreenSegue"
     
+    var selectedFriend: Friend?
+    
     var photoImageView: UIImageView!
-    var photos: [UIImage] = [] {
+    var friendPhotos: [Photo] = [] {
         didSet {
             self.collectionView.reloadData()
         }
     }
     
-    var selectedFriend: Friend?
+    var friendImages: [UIImage] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +35,26 @@ class PhotoCollectionViewController: UICollectionViewController {
                 
         title = selectedFriend?.name
         
-        ServiceVK().loadVKData(method: .photos) { [weak self] photos in
-            let photoArray = photos as? [Photo] ?? []
-            for item in photoArray {
-                self?.photos.append(item.photo)
+        ServiceVK().loadPhotos(for: selectedFriend!.userID) { friendPhotos in
+            self.friendPhotos = friendPhotos
+            self.fillFriendImagesArray(photos: friendPhotos)
+        }
+    }
+    
+    func fillFriendImagesArray(photos: [Photo]) {
+        for photo in photos {
+            let url = URL(string: photo.collectionPhotoData)
+            let resource = ImageResource(downloadURL: url!)
+
+            KingfisherManager.shared.retrieveImage(with: resource) { result in
+                switch result {
+                case .success(let value):
+                    self.friendImages.append(value.image)
+                case .failure(let error):
+                    print("Error: \(error)")
+                }
             }
         }
-
     }
     
     // MARK: UICollectionViewDataSource
@@ -47,21 +64,22 @@ class PhotoCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
+        return friendPhotos.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifierPhotoCell, for: indexPath) as? CustomCollectionViewCell else {preconditionFailure("Error")}
         
-        cell.configure(image: photos[indexPath.item])
+        cell.configure(photo: friendPhotos[indexPath.item])
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "FullScreenVC") as? FullScreenVC else {return}
-        vc.selectedPhoto = photos[indexPath.item]
+        vc.selectedPhotoData = friendPhotos[indexPath.item].collectionPhotoData
         vc.selectedPhotoIndex = indexPath.item
-        vc.photos = photos
+        vc.photos = friendPhotos
+        vc.friendImages = friendImages
         navigationController?.pushViewController(vc, animated: true)
     }
     
