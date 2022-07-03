@@ -28,8 +28,11 @@ class CustomCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(photo: Photo) {
-        let url = URL(string: photo.collectionPhotoData)
+      //  let url = URL(string: photo.photoDict[value(forKey: "x") as! String] ?? "")
+        guard let urlString = photo.photoDict["m"] else { return }
+        if let url = URL(string: urlString) {
         photoImageView.kf.setImage(with: url)
+        }
 //        photoImageView.image = image
     }
     

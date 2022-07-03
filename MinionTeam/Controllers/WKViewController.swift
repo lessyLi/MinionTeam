@@ -8,6 +8,7 @@
 import UIKit
 import WebKit
 import Alamofire
+import RealmSwift
 
 class WKViewController: UIViewController {
 
@@ -35,14 +36,11 @@ class WKViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         webview.load(serviceVK.autorisationVK())
         print("autorisationVK")
     }
     
 }
-
-    //сега ж не сработает с этого экрана.
 
 extension WKViewController: WKNavigationDelegate {
     

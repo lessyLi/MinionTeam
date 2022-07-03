@@ -10,12 +10,17 @@ import RealmSwift
 import Kingfisher
 
 class Friend: Object, Decodable {
-
+    
     @Persisted var userID: Int = 0
     @Persisted var name: String = ""
     @Persisted var lastName: String = ""
     @Persisted var userPhotoData: String = ""
-    var avatar: UIImage = #imageLiteral(resourceName: "16.-phill") //вот это потом превратится в фото из стрингов avatar
+//    @Persisted var photos: List<Photo>
+    var avatar: UIImage = #imageLiteral(resourceName: "16.-phill") 
+    
+    override class func primaryKey() -> String? {
+        return "userID"
+    }
     
     enum CodingKeys: String, CodingKey {
         case userID = "id"
