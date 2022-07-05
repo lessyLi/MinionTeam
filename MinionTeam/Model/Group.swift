@@ -14,12 +14,18 @@ import Kingfisher
 //}
 
 class Group: Object, Decodable {
-
+    
+    @Persisted var groupID: Int = 0
     @Persisted var name: String = ""
-    @Persisted var groupPhotoData: String = "" //url photos
-    var avatar: UIImage = #imageLiteral(resourceName: "selfie") //вот это потом превратится в фото из стрингов avatar
+    @Persisted var groupPhotoData: String = ""
+    var avatar: UIImage = #imageLiteral(resourceName: "selfie")
+    
+    override class func primaryKey() -> String? {
+            return "groupID"
+        }
     
     enum CodingKeys: String, CodingKey {
+        case groupID = "id"
         case name
         case groupPhotoData = "photo_100"
     }
@@ -27,6 +33,7 @@ class Group: Object, Decodable {
     convenience required init(from decoder: Decoder) throws {
         self.init()
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.groupID = try container.decode(Int.self, forKey: .groupID)
         self.name = try container.decode(String.self, forKey: .name)
         self.groupPhotoData = try container.decode(String.self, forKey: .groupPhotoData)
     }
