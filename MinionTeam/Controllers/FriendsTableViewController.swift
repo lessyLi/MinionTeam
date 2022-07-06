@@ -13,126 +13,165 @@ class FriendsTableViewController: UITableViewController {
     let reuseIdentifierCustom = "reuseIdentifierCustom"
     let fromFriendsToGallerySegue = "fromFriendsToGallery"
     
-    var friendsArray: [Friend] = [] {
+    private var myID = Session.instance.myID
+    let serviceVK = ServiceVK()
+    
+//    var friendsArray: [Friend] = [] {
+//        didSet {
+//            for friend in friendsArray {
+//                let friendKey = String(friend.lastName.prefix(1))
+//                if var friendValues = sortedFriendsArray[friendKey] {
+//                    friendValues.append(friend)
+//                    sortedFriendsArray[friendKey] = friendValues
+//                } else {
+//                    sortedFriendsArray[friendKey] = [friend]
+//                }
+//            }
+//            friendsSectionTitles = [String](sortedFriendsArray.keys)
+//            friendsSectionTitles = friendsSectionTitles.sorted(by: { $0 < $1 })
+//
+//            self.tableView.reloadData()
+//        }
+//    }
+    
+    var testFriends: [Friend] = [] {
         didSet {
-            for friend in friendsArray {
-                let friendKey = String(friend.lastName.prefix(1))
-                if var friendValues = sortedFriendsArray[friendKey] {
-                    friendValues.append(friend)
-                    sortedFriendsArray[friendKey] = friendValues
+            testFriends.forEach { friend in
+                guard let firstChar = friend.lastName.first else {return}
+                
+                if friendsDictionary.keys.contains(firstChar) {
+                    friendsDictionary[firstChar]?.append(friend)
                 } else {
-                    sortedFriendsArray[friendKey] = [friend]
+                    friendsDictionary[firstChar] = [friend]
                 }
+                friendsSectionTitles = [Character](friendsDictionary.keys)
+                friendsSectionTitles = friendsSectionTitles.sorted(by: { $0 < $1 })
             }
-            friendsSectionTitles = [String](sortedFriendsArray.keys)
-            friendsSectionTitles = friendsSectionTitles.sorted(by: { $0 < $1 })
-            
             self.tableView.reloadData()
         }
     }
-    var sortedFriendsArray = [String: [Friend]]()
-    var friendsSectionTitles = [String]()
     
-    var friendsData: Results<Friend>?
+    //Logic betwn friendsData and testFriends the same
+    
+    private var notificationToken: NotificationToken?
+    
+    var friendsDictionary = [Character: [Friend]]()
+    var friendsSectionTitles = [Character]()
+
+    var friendsData: Results<Friend>? {
+        didSet {
+            guard let friendsData = friendsData else { return }
+            friendsData.forEach { friend in
+                guard let firstChar = friend.lastName.first else {return}
+                
+                if friendsDictionary.keys.contains(firstChar) {
+                    friendsDictionary[firstChar]?.append(friend)
+                } else {
+                    friendsDictionary[firstChar] = [friend]
+                }
+                friendsSectionTitles = [Character](friendsDictionary.keys)
+                friendsSectionTitles = friendsSectionTitles.sorted(by: { $0 < $1 })
+            }
+            self.tableView.reloadData()
+        }
+    }
+    
+    // MARK: - Deinit
+    deinit {
+        notificationToken?.invalidate()
+    }
     
     // MARK: - life circle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // fillFriendsArray()
+
+        serviceVK.loadFriends(method: .friends, for: myID)
+        getFriendsDataFromRealm()
+        observeFriendsData()
         
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
         title = "My Friends"
-        //        ServiceVK().loadFriends { friendsArray in
-        //            self.friendsArray = friendsArray
-        //        }
-        ServiceVK().loadFriends { [weak self] in
-            self?.getFriendsDataFromRealm()
-        }
+ 
+        tableView.reloadData()
+//        ServiceVK().loadFriends { [weak self] in
+//            self?.getFriendsDataFromRealm()
+//        }
     }
-    
+
+    // MARK: - Getting Data from Realm
     private func getFriendsDataFromRealm() {
         do {
             let realm = try Realm()
             print(realm.configuration.fileURL?.absoluteString ?? "NO REALM URL")
             friendsData = realm.objects(Friend.self)
             
-            if let friendsData = friendsData {
-                friendsArray = Array(friendsData)
-            }
+//            if let friendsData = friendsData {
+////                friendsArray = Array(friendsData)
+//                testFriends = Array(friendsData)
+//            }
         } catch {
             print(error)
         }
     }
-    
-    
-    // MARK: - Sorting method
-    private func sort(friends: [Friend]) -> [Character: [Friend]] {
-        var friendsDictionary = [Character: [Friend]]()
+    // MARK: - Observe Changes
+    private func observeFriendsData() {
         
-        friends.forEach { friend in
-            guard let firstChar = friend.lastName.first else {return}
-            
-            if friendsDictionary.keys.contains(firstChar) {
-                friendsDictionary[firstChar]?.append(friend)
-            } else {
-                friendsDictionary[firstChar] = [friend]
+        notificationToken = friendsData?.observe{ [weak self] change in
+            print(change)
+            switch change {
+            case .initial(_):
+                self?.tableView.reloadData()
+            case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
+                guard let friendsData = self?.friendsData else { return }
+                self?.testFriends = Array(friendsData)
+//                self?.tableView.performBatchUpdates {
+//                    guard let friendsData = self?.friendsData else { return }
+//
+//                    self?.tableView.deleteRows(at: deletions.map { IndexPath(
+//                        row: self?.friendsDictionary[friendsData[$0].lastName.first!]?.firstIndex(of: friendsData[$0]) ?? 0,
+//                        section: self?.friendsSectionTitles.firstIndex(of: friendsData[$0].lastName.first!) ?? 0)
+//                    }, with: .automatic)
+//
+//                    self?.tableView.insertRows(at: insertions.map { IndexPath(
+//                        row: self?.friendsDictionary[friendsData[$0].lastName.first!]?.firstIndex(of: friendsData[$0]) ?? 0,
+//                        section: self?.friendsSectionTitles.firstIndex(of: friendsData[$0].lastName.first!) ?? 0)
+//                    }, with: .automatic)
+//
+//                    self?.tableView.reloadRows(at: modifications.map { IndexPath(
+//                        row: self?.friendsDictionary[friendsData[$0].lastName.first!]?.firstIndex(of: friendsData[$0]) ?? 0,
+//                        section: self?.friendsSectionTitles.firstIndex(of: friendsData[$0].lastName.first!) ?? 0)
+//                    }, with: .automatic)
+//
+//
+//                }
+            self?.tableView.reloadData()
+            case .error(_):
+                break
             }
         }
-        return friendsDictionary
     }
-    
-    // MARK: - Searching method
-    private func findSelectedFriend(indexPath: IndexPath) -> Friend {
-        let firstChar = sortedFriendsArray.keys.sorted()[indexPath.section]
-        let friendsInSection = sortedFriendsArray[firstChar]!
-        let selectedFriend: Friend = friendsInSection[indexPath.row]
-        return selectedFriend
-    }
-    
-    // MARK: - Segue prepare
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == fromFriendsToGallerySegue,
-           let destinationVC = segue.destination as? PhotoCollectionViewController,
-           let indexPath = tableView.indexPathForSelectedRow {
-            
-            let keyFriend = friendsSectionTitles[indexPath.section]
-            
-            if let valueFriend = sortedFriendsArray[keyFriend] {
-                let selectedFriend = valueFriend[indexPath.row]
-                destinationVC.selectedFriend = selectedFriend
-                // print(selectedFriend.userID)
-            }
-            //  let selectedFriend = valueFriend[indexPath.row]
-            // let selectedFriend = friendsData?[indexPath.row]
-            //            let selectedFriend = findSelectedFriend(indexPath: indexPath)
-            // destinationVC.photos = selectedFriend.photos
-            //  destinationVC.selectedFriend = selectedFriend
-        }
-    }
-    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        sortedFriendsArray.keys.count
+        friendsDictionary.keys.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sortedKeys = sortedFriendsArray.keys.sorted()
-        let friendsInSection = sortedFriendsArray[sortedKeys[section]]?.count ?? 0
+        let sortedKeys = friendsDictionary.keys.sorted()
+        let friendsInSection = friendsDictionary[sortedKeys[section]]?.count ?? 0
         return friendsInSection
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        String(sortedFriendsArray.keys.sorted()[section])
+        String(friendsDictionary.keys.sorted()[section])
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierCustom, for: indexPath) as? CustomTableViewCell else {preconditionFailure("Error")}
-        
+
         let friend: Friend = findSelectedFriend(indexPath: indexPath)
+       // let friend = friendsData[indexPath.row]
         
         cell.configure(friend: friend)
         return cell
@@ -141,13 +180,33 @@ class FriendsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
           performSegue(withIdentifier: fromFriendsToGallerySegue) { self.findSelectedFriend(indexPath: indexPath)
           }
-      //  print(friendsArray.count, sortedFriendsArray.values)
-        // print(indexPath.row, indexPath.section, indexPath.item)
-        //        performSegue(withIdentifier: fromFriendsToGallerySegue) { self.friendsData?[indexPath.item] }
+    }
+    // MARK: - Segue prepare
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == fromFriendsToGallerySegue,
+           let destinationVC = segue.destination as? PhotoCollectionViewController,
+           let indexPath = tableView.indexPathForSelectedRow {
+            print(indexPath)
+            let keyFriend = friendsSectionTitles[indexPath.section]
+            print(keyFriend)
+            if let valueFriend = friendsDictionary[keyFriend] {
+                let selectedFriend = valueFriend[indexPath.row]
+//                destinationVC.selectedFriend = selectedFriend
+                destinationVC.friendID = selectedFriend.userID
+                destinationVC.title = "\(selectedFriend.name)"
+            }
+        }
+    }
+    // MARK: - Searching Selected Friend method
+    private func findSelectedFriend(indexPath: IndexPath) -> Friend {
+        let firstChar = friendsDictionary.keys.sorted()[indexPath.section]
+        let friendsInSection = friendsDictionary[firstChar]!
+        let selectedFriend: Friend = friendsInSection[indexPath.row]
+        return selectedFriend
     }
     
 }
-
 
 // MARK: - Filling array method
 /*
@@ -176,3 +235,18 @@ class FriendsTableViewController: UITableViewController {
  }
  */
 
+//// MARK: - Sorting method
+//private func sort(friends: [Friend]) -> [Character: [Friend]] {
+//    var friendsDictionary = [Character: [Friend]]()
+//
+//    friends.forEach { friend in
+//        guard let firstChar = friend.lastName.first else {return}
+//
+//        if friendsDictionary.keys.contains(firstChar) {
+//            friendsDictionary[firstChar]?.append(friend)
+//        } else {
+//            friendsDictionary[firstChar] = [friend]
+//        }
+//    }
+//    return friendsDictionary
+//}

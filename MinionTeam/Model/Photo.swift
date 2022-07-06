@@ -54,14 +54,5 @@ class Photo: Object, Decodable {
             let collectionPhotoData = try secondSize.decode(String.self, forKey: .collectionPhotoData)
             self.photoDict.updateValue(collectionPhotoData, forKey: type)
         }
-
-//        _ = try sizeContainer.nestedContainer(keyedBy: SizesCodingKeys.self)
-//        _ = try sizeContainer.nestedContainer(keyedBy: SizesCodingKeys.self)
-//        _ = try sizeContainer.nestedContainer(keyedBy: SizesCodingKeys.self)
-//        _ = try sizeContainer.nestedContainer(keyedBy: SizesCodingKeys.self)
-        
-//        let sizes = try sizeContainer.nestedContainer(keyedBy: SizesCodingKeys.self)
-//        self.type = try sizes.decode(String.self, forKey: .type)
-//        self.collectionPhotoData = try sizes.decode(String.self, forKey: .collectionPhotoData)
     }
 }
