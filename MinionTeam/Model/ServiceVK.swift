@@ -25,7 +25,7 @@ class ServiceVK {
         case friends = "/method/friends.get"
         case photos = "/method/photos.getAll"
         case groups = "/method/groups.get"
-//        case searchGroups = "/method/groups.search"
+        case searchGroups = "/method/groups.search"
         
     }
     
@@ -116,6 +116,41 @@ class ServiceVK {
             }
         }
     }
+    
+    // loading groups data with searching
+    func loadMoreGroups(method: MethodsRequest, for id: Int, searchText: String, completion: @escaping ([Group]) -> Void) {
+        let path = method.rawValue
+        
+        let parameters: Parameters = [
+            "access_token": token,
+            "user_id": id,
+            "owner_id": id,
+            "v": ServiceVK.versionApiVk,
+            "q": searchText,
+            "fields": "description",
+            "extended": "1"
+        ]
+        let url = baseUrl + path
+        print(url)
+
+        AF.request(url, method: .get, parameters: parameters).responseData { response in
+            switch response.result {
+            case .success(let data):
+                do {
+                    let groupsResponse = try? JSONDecoder().decode(Groups.self, from: data)
+                    print(groupsResponse)
+                    completion(groupsResponse?.items ?? [])
+                } catch {
+                    print("Decoding error from data: \(data)")
+                    completion([])
+                }
+            case .failure(let error):
+                print(error)
+                completion([])
+            }
+        }
+    }
+    
     // MARK: - Photos
     func loadPhotos(method: MethodsRequest, for id: Int) {
         
@@ -308,29 +343,6 @@ class ServiceVK {
 //                return
 //            }
 //            completion(photosResponse.items)
-//        }
-//    }
-    /// load data with searching
-//    func loadVKData(method: MethodsRequest, searchText: String, completion: @escaping ([Item]) -> Void ) {
-//        let path = method.rawValue
-//
-//        var parameters: Parameters = method.parameters
-//        parameters["q"] = searchText
-//        let url = baseUrl + path
-//        print(url)
-//
-//        AF.request(url, method: .get, parameters: parameters).responseData { response in
-//            switch response.result {
-//            case .success(let data):
-//                do {
-//                    let fromJSON = try JSONSerialization.jsonObject(with: data)
-//                    print(fromJSON)
-//                } catch {
-//                    print("Decoding error from data: \(data)")
-//                }
-//            case .failure(let error):
-//                print(error)
-//            }
 //        }
 //    }
     

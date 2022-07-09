@@ -10,4 +10,8 @@ target 'MinionTeam' do
   pod 'Alamofire'
   pod 'RealmSwift'
   pod 'Kingfisher'
+  pod 'FirebaseCore'
+  pod 'FirebaseDatabase'
+  pod 'FirebaseAnalytics'
+  pod 'FirebaseAuth'
 end
