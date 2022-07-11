@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import FirebaseDatabase
 
 class MyGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     
@@ -14,6 +15,8 @@ class MyGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     
     let reuseIdentifierCustom = "reuseIdentifierCustom"
     let fromAllGroupsToMyGroupsSegue = "fromAllGroupsToMyGroups"
+    
+    private var myID = Session.instance.myID
 
     var groupsData: Results<Group>?
     
@@ -24,42 +27,31 @@ class MyGroupsTableViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     var filteredMyGroupsArray: [Group]!
+    private var notificationToken: NotificationToken?
+    private var requestHandle: DatabaseHandle?
     
-//    func fillMyGroupsArray() {
-//        let group1 = Group(name: "Pessimists Party", avatar: UIImage(named: "pessimists")!)
-//        let group2 = Group(name: "Optimists Party", avatar: UIImage(named: "optimists")!)
-//        myGroupsArray.append(group1)
-//        myGroupsArray.append(group2)
-//    }
+    // MARK: - Deinit
+    deinit {
+        notificationToken?.invalidate()
+        requestHandle = nil
+    }
     
     @IBAction func findMoreGroupsButton(_ sender: UIBarButtonItem) {
     }
-    
-    func isItemAlreadyInArray(group: Group) -> Bool {
-        return myGroupsArray.contains { sourceGroup in
-            sourceGroup.name == group.name
-        }
-    }
-    
     // MARK: - DidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // fillMyGroupsArray()
+        ServiceVK().loadGroups(method: .groups, for: myID)
+        getGroupsDataFromRealm()
+        observeGroupsData()
+        
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
         title = "My Groups"
         
         searchBar.delegate = self
-        filteredMyGroupsArray = myGroupsArray
-//        
-//        ServiceVK().loadGroups { groupsArray in
-//            self.myGroupsArray = groupsArray
-//        }
-    
-        ServiceVK().loadGroups { [weak self] in
-            self?.getGroupsDataFromRealm()
-        }
+//        filteredMyGroupsArray = myGroupsArray
     }
     
     private func getGroupsDataFromRealm() {
@@ -75,6 +67,21 @@ class MyGroupsTableViewController: UITableViewController, UISearchBarDelegate {
             print(error)
         }
     }
+    private func observeGroupsData() {
+        notificationToken = groupsData?.observe { [weak self] change in
+            switch change {
+            case .initial:
+                self?.tableView.reloadData()
+            case let .update(_, deletions, insertions, modifications):
+                guard let groupsData = self?.groupsData else { return }
+                self?.myGroupsArray = Array(groupsData)
+//                self?.filteredMyGroupsArray = self?.myGroupsArray
+                self?.tableView.reloadData()
+            case .error(let error):
+                print(error)
+            }
+        }
+    }
     
     // MARK: - Unwind Segue
     
@@ -83,13 +90,19 @@ class MyGroupsTableViewController: UITableViewController, UISearchBarDelegate {
            let sourceVC = segue.source as? MoreGroupsTableViewController,
            let selectedGroup = sourceVC.selectedGroup {
             
-            if isItemAlreadyInArray(group: selectedGroup) {return}
+            if isItemAlreadyInArray(group: selectedGroup) { return }
             filteredMyGroupsArray.append(selectedGroup)
-            myGroupsArray.append(selectedGroup)
+//            myGroupsArray.append(selectedGroup)
+            saveAddedGroups(userID: myID, groups: filteredMyGroupsArray)
             tableView.reloadData()
         }
     }
     
+    private func isItemAlreadyInArray(group: Group) -> Bool {
+        return myGroupsArray.contains { sourceGroup in
+            sourceGroup.groupID == group.groupID
+        }
+    }
     // MARK: - Search Bar
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -132,11 +145,34 @@ class MyGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+//            myGroupsArray.remove(at: indexPath.row)
             filteredMyGroupsArray.remove(at: indexPath.row)
-            myGroupsArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-
-
 }
+
+// MARK: - Firebase Database
+extension MyGroupsTableViewController {
+    
+    private func saveAddedGroups(userID: Int, groups: [Group]) {
+       
+        let group = AddedGroups(userID: userID, groups: groups)
+        let data = group.toAnyObject
+        let dbLink = Database.database(url: "https://minionly-554bf-default-rtdb.europe-west1.firebasedatabase.app").reference()
+        
+        dbLink.child("Groups/\(userID)").setValue(data)
+        
+        requestHandle = dbLink.child("Groups/\(userID)").observe(DataEventType.value, with: { snapshot in
+            print(snapshot.value)
+        })
+    }
+}
+
+
+//    func fillMyGroupsArray() {
+//        let group1 = Group(name: "Pessimists Party", avatar: UIImage(named: "pessimists")!)
+//        let group2 = Group(name: "Optimists Party", avatar: UIImage(named: "optimists")!)
+//        myGroupsArray.append(group1)
+//        myGroupsArray.append(group2)
+//    }

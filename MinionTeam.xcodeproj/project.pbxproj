@@ -16,6 +16,7 @@
 		FA2CD167285B5F16005FE96A /* ServiceVK.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2CD166285B5F16005FE96A /* ServiceVK.swift */; };
 		FA2DDDF9282FE872009F4964 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2DDDF7282FE872009F4964 /* CustomCollectionViewCell.swift */; };
 		FA2DDDFA282FE872009F4964 /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2DDDF8282FE872009F4964 /* CustomCollectionViewCell.xib */; };
+		FA4870632876072700865420 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA4870622876072700865420 /* GoogleService-Info.plist */; };
 		FA6C0D64282EBB910052543F /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6C0D63282EBB910052543F /* Friend.swift */; };
 		FA6C0D66282EBB9F0052543F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6C0D65282EBB9F0052543F /* Group.swift */; };
 		FA6C0D6A282EC5110052543F /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6C0D68282EC5110052543F /* CustomTableViewCell.swift */; };
@@ -40,6 +41,7 @@
 		FAED84192832BD9500219792 /* LikeCounterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAED84182832BD9500219792 /* LikeCounterView.xib */; };
 		FAED841C283380B700219792 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED841B283380B700219792 /* CanvasViewController.swift */; };
 		FAED841F2833819100219792 /* DrawingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED841E2833819100219792 /* DrawingControl.swift */; };
+		FAEDA2E8287997890025F652 /* AddedGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEDA2E7287997890025F652 /* AddedGroups.swift */; };
 		FAF8E3D228638D8800BBFFB0 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8E3D128638D8800BBFFB0 /* Groups.swift */; };
 		FAF8E3D428638E9A00BBFFB0 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8E3D328638E9A00BBFFB0 /* Photo.swift */; };
 		FAF8E3D628638EA400BBFFB0 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF8E3D528638EA400BBFFB0 /* Photos.swift */; };
@@ -59,6 +61,7 @@
 		FA2CD166285B5F16005FE96A /* ServiceVK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceVK.swift; sourceTree = "<group>"; };
 		FA2DDDF7282FE872009F4964 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA2DDDF8282FE872009F4964 /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
+		FA4870622876072700865420 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA6C0D63282EBB910052543F /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		FA6C0D65282EBB9F0052543F /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		FA6C0D68282EC5110052543F /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -85,6 +88,7 @@
 		FAED84182832BD9500219792 /* LikeCounterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeCounterView.xib; sourceTree = "<group>"; };
 		FAED841B283380B700219792 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
 		FAED841E2833819100219792 /* DrawingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingControl.swift; sourceTree = "<group>"; };
+		FAEDA2E7287997890025F652 /* AddedGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedGroups.swift; sourceTree = "<group>"; };
 		FAF8E3D128638D8800BBFFB0 /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		FAF8E3D328638E9A00BBFFB0 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		FAF8E3D528638EA400BBFFB0 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 				FA6C0D63282EBB910052543F /* Friend.swift */,
 				FAF8E3D128638D8800BBFFB0 /* Groups.swift */,
 				FA6C0D65282EBB9F0052543F /* Group.swift */,
+				FAEDA2E7287997890025F652 /* AddedGroups.swift */,
 				FAF8E3D528638EA400BBFFB0 /* Photos.swift */,
 				FAF8E3D72864344000BBFFB0 /* PhotoSizes.swift */,
 				FAF8E3D328638E9A00BBFFB0 /* Photo.swift */,
@@ -197,6 +202,7 @@
 		FAC376F1281FEFA10086732E /* MinionTeam */ = {
 			isa = PBXGroup;
 			children = (
+				FA4870622876072700865420 /* GoogleService-Info.plist */,
 				FADDC9EA28565E40005DFF3A /* Animators */,
 				FA6C0D61282EBB300052543F /* Model */,
 				FA6C0D67282EBBB90052543F /* Cells */,
@@ -302,6 +308,7 @@
 			files = (
 				FAF8E3DF2865EBCC00BBFFB0 /* .gitignore in Resources */,
 				FAED84192832BD9500219792 /* LikeCounterView.xib in Resources */,
+				FA4870632876072700865420 /* GoogleService-Info.plist in Resources */,
 				FAC376FF281FEFA30086732E /* LaunchScreen.storyboard in Resources */,
 				FAC376FC281FEFA30086732E /* Assets.xcassets in Resources */,
 				FACEE1F6283AAF7300B2D9BA /* NewsTableViewCell.xib in Resources */,
@@ -368,6 +375,7 @@
 				FA2CD167285B5F16005FE96A /* ServiceVK.swift in Sources */,
 				FAED84172832BD7A00219792 /* LikeCounterView.swift in Sources */,
 				FAD094072858AA4B0092AF1C /* WKViewController.swift in Sources */,
+				FAEDA2E8287997890025F652 /* AddedGroups.swift in Sources */,
 				FAC376F7281FEFA10086732E /* LoginViewController.swift in Sources */,
 				FA0DED77285F59A3002FB32A /* Friends.swift in Sources */,
 				FAEC242A284D22AC0020BF2B /* CustomNavigationController.swift in Sources */,

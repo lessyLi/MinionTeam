@@ -14,11 +14,19 @@ class MoreGroupsTableViewController: UITableViewController, UISearchBarDelegate 
     
     let reuseIdentifierCustom = "reuseIdentifierCustom"
     let fromAllGroupsToMyGroupsSegue = "fromAllGroupsToMyGroups"
+    let serviceVK = ServiceVK()
+    private var myID = Session.instance.myID
     
     var selectedGroup: Group?
     
-    var moreGroupsArray = [Group]()
+    var moreGroupsArray = [Group]() {
+        didSet {
+            filteredMoreGroupsArray = moreGroupsArray
+            tableView.reloadData()
+        }
+    }
     var filteredMoreGroupsArray = [Group]()
+    
 //    
 //    func fillMoreGroupsArray() {
 //        let group1 = Group(name: "Beautiful hair Club", avatar: UIImage(named: "hair")!)
@@ -38,6 +46,15 @@ class MoreGroupsTableViewController: UITableViewController, UISearchBarDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        serviceVK.loadMoreGroups(method: .searchGroups, for: myID, searchText: "Swift") { moreGroups in
+            self.moreGroupsArray = moreGroups
+        }
+        
+//        ServiceVK().loadPhotos(for: selectedFriend!.userID) { friendPhotos in
+        //            self.friendPhotos = friendPhotos
+        //            self.fillFriendImagesArray(photos: friendPhotos)
+        //        }
+        
 //        fillMoreGroupsArray()
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
         title = "All Groups"
