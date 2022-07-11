@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import FirebaseDatabase
 
 class MyGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     
@@ -27,21 +28,16 @@ class MyGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     }
     var filteredMyGroupsArray: [Group]!
     private var notificationToken: NotificationToken?
+    private var requestHandle: DatabaseHandle?
     
     // MARK: - Deinit
     deinit {
         notificationToken?.invalidate()
+        requestHandle = nil
     }
     
     @IBAction func findMoreGroupsButton(_ sender: UIBarButtonItem) {
     }
-    
-    func isItemAlreadyInArray(group: Group) -> Bool {
-        return myGroupsArray.contains { sourceGroup in
-            sourceGroup.name == group.name
-        }
-    }
-    
     // MARK: - DidLoad
     
     override func viewDidLoad() {
@@ -55,7 +51,7 @@ class MyGroupsTableViewController: UITableViewController, UISearchBarDelegate {
         title = "My Groups"
         
         searchBar.delegate = self
-        filteredMyGroupsArray = myGroupsArray
+//        filteredMyGroupsArray = myGroupsArray
     }
     
     private func getGroupsDataFromRealm() {
@@ -75,15 +71,11 @@ class MyGroupsTableViewController: UITableViewController, UISearchBarDelegate {
         notificationToken = groupsData?.observe { [weak self] change in
             switch change {
             case .initial:
-//                guard let groupsData = self?.groupsData else { return }
-//
-//                self?.myGroupsArray = Array(groupsData)
                 self?.tableView.reloadData()
             case let .update(_, deletions, insertions, modifications):
                 guard let groupsData = self?.groupsData else { return }
-
                 self?.myGroupsArray = Array(groupsData)
-//                ,
+//                self?.filteredMyGroupsArray = self?.myGroupsArray
                 self?.tableView.reloadData()
             case .error(let error):
                 print(error)
@@ -98,13 +90,19 @@ class MyGroupsTableViewController: UITableViewController, UISearchBarDelegate {
            let sourceVC = segue.source as? MoreGroupsTableViewController,
            let selectedGroup = sourceVC.selectedGroup {
             
-            if isItemAlreadyInArray(group: selectedGroup) {return}
+            if isItemAlreadyInArray(group: selectedGroup) { return }
             filteredMyGroupsArray.append(selectedGroup)
-            myGroupsArray.append(selectedGroup)
+//            myGroupsArray.append(selectedGroup)
+            saveAddedGroups(userID: myID, groups: filteredMyGroupsArray)
             tableView.reloadData()
         }
     }
     
+    private func isItemAlreadyInArray(group: Group) -> Bool {
+        return myGroupsArray.contains { sourceGroup in
+            sourceGroup.groupID == group.groupID
+        }
+    }
     // MARK: - Search Bar
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -147,13 +145,28 @@ class MyGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            filteredMyGroupsArray.remove(at: indexPath.row)
 //            myGroupsArray.remove(at: indexPath.row)
+            filteredMyGroupsArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+}
 
-
+// MARK: - Firebase Database
+extension MyGroupsTableViewController {
+    
+    private func saveAddedGroups(userID: Int, groups: [Group]) {
+       
+        let group = AddedGroups(userID: userID, groups: groups)
+        let data = group.toAnyObject
+        let dbLink = Database.database(url: "https://minionly-554bf-default-rtdb.europe-west1.firebasedatabase.app").reference()
+        
+        dbLink.child("Groups/\(userID)").setValue(data)
+        
+        requestHandle = dbLink.child("Groups/\(userID)").observe(DataEventType.value, with: { snapshot in
+            print(snapshot.value)
+        })
+    }
 }
 
 

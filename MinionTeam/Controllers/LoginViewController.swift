@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
@@ -43,23 +45,22 @@ class LoginViewController: UIViewController {
         self.view.endEditing(true)
     }
       
-    // MARK: - Segue
+    // MARK: - should Perform Segue
 
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        guard let login = loginInput.text, let password = passwordInput.text else { return false }
-
-        if login == "" && password == "" {
-            return true
-        } else {
-            let alert = UIAlertController(title: "Error", message: "Wrong data", preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
-
-            return false
-        }
-    }
-    
+//    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+//        guard let login = loginInput.text, let password = passwordInput.text else { return false }
+//
+//        if login == "" && password == "" {
+//            return true
+//        } else {
+//            let alert = UIAlertController(title: "Error", message: "Wrong data", preferredStyle: .alert)
+//            let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//            alert.addAction(action)
+//            present(alert, animated: true, completion: nil)
+//
+//            return false
+//        }
+//    }
   
     // MARK: - Loading animation
     
@@ -74,9 +75,6 @@ class LoginViewController: UIViewController {
         
         loadingView.isHidden = false
         showLoadingCircle()
-            // self.performSegue(withIdentifier: "logInToVKSegue", sender: nil)
-      //  self.performSegue(withIdentifier: "logInSegue", sender: nil)
-        
     }
 
     func showLoadingCircle() {
@@ -143,13 +141,43 @@ class LoginViewController: UIViewController {
             }
 
         } completion: { _ in
-           // self.showLoadingCircle()
-            self.performSegue(withIdentifier: "logInSegue", sender: nil)
-            //  self.performSegue(withIdentifier: "logInToVKSegue", sender: nil)
-
+            self.performAuth(email: self.loginInput.text, password: self.passwordInput.text!) { [weak self] isCompleted in
+                guard isCompleted else { return }
+                DispatchQueue.main.async {
+                    self?.performSegue(withIdentifier: "logInSegue", sender: nil)
+                }
+            }
         }
-
     }
+    
+    private func performAuth(email: String?, password: String, completion: @escaping (Bool) -> Void) {
+        
+        guard let email = loginInput.text,
+              !email.isEmpty,
+              let password = passwordInput.text,
+              !password.isEmpty else {
+   
+            ///Alert VC got invalid auth
+            let alert = UIAlertController(title: "Error", message: "Wrong data", preferredStyle: .alert)
+            let actionOk = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            let actionBack = UIAlertAction(title: "Back", style: .default, handler: nil)
+            alert.addAction(actionOk)
+            alert.addAction(actionOk)
+
+            present(alert, animated: true, completion: nil)
+            
+            completion(false)
+            return
+        }
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            print("!!!!!!!")
+            print(authResult)
+            print(error)
+            print("!!!!!!!")
+            completion(authResult != nil)
+        }
+    }
+    
     
 //    @IBAction func showLoadingAnimation(_ sender: UIButton) {
 //
