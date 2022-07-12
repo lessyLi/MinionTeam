@@ -162,7 +162,7 @@ class LoginViewController: UIViewController {
             let actionOk = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             let actionBack = UIAlertAction(title: "Back", style: .default, handler: nil)
             alert.addAction(actionOk)
-            alert.addAction(actionOk)
+            alert.addAction(actionBack)
 
             present(alert, animated: true, completion: nil)
             
