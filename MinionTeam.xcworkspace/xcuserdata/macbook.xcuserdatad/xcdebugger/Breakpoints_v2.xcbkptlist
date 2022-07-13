@@ -30,9 +30,9 @@
             filePath = "MinionTeam/Model/ServiceVK.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "loadFriends(completion:)"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "autorisationVK()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -46,9 +46,9 @@
             filePath = "MinionTeam/Model/ServiceVK.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "loadVKData(method:for:completion:)"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "autorisationVK()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -62,9 +62,9 @@
             filePath = "MinionTeam/Model/ServiceVK.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "loadFriends(completion:)"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "autorisationVK()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -78,9 +78,9 @@
             filePath = "MinionTeam/Model/ServiceVK.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "loadFriends(completion:)"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "autorisationVK()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

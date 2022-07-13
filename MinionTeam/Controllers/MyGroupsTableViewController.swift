@@ -92,7 +92,7 @@ class MyGroupsTableViewController: UITableViewController, UISearchBarDelegate {
             
             if isItemAlreadyInArray(group: selectedGroup) { return }
             filteredMyGroupsArray.append(selectedGroup)
-//            myGroupsArray.append(selectedGroup)
+            myGroupsArray.append(selectedGroup)
             saveAddedGroups(userID: myID, groups: filteredMyGroupsArray)
             tableView.reloadData()
         }

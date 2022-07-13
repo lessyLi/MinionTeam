@@ -26,6 +26,7 @@ class ServiceVK {
         case photos = "/method/photos.getAll"
         case groups = "/method/groups.get"
         case searchGroups = "/method/groups.search"
+        case news = "/method/newsfeed.get"
         
     }
     
@@ -40,7 +41,8 @@ class ServiceVK {
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
 //            URLQueryItem(name: "scope", value: "327686"),
-            URLQueryItem(name: "scope", value: "262150"),
+            URLQueryItem(name: "scope", value: "270342"),
+//                         URLQueryItem(name: "scope", value: "262150"),
             URLQueryItem(name: "response_type", value: "token"),
 //            URLQueryItem(name: "scope", value: "offline"),
             URLQueryItem(name: "v", value: "5.131") ]
@@ -192,6 +194,36 @@ class ServiceVK {
             }
         } catch {
             print(error)
+        }
+    }
+    // MARK: - News
+    func getNews(method: MethodsRequest, completion: @escaping(_ news: [News], _ groups: [Int: Group], _ friends: [Int: Friend]) -> Void) {
+        let path = method.rawValue
+        let url = baseUrl + path
+        let patameters: Parameters = [
+            "filters": "post",
+            "access_token": token,
+            "v": ServiceVK.versionApiVk
+        ]
+        
+        AF.request(url, method: .get, parameters: patameters).responseData { response in
+            switch response.result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .secondsSince1970
+                    let results = try decoder.decode(NewsResponse.self, from: data)
+                    
+                    let news = results.items
+                    let groups = results.groups
+                    let friends = results.profiles
+                    completion(news, groups, friends)
+                } catch {
+                    print("Error while decoding response: from: \(String(data: data, encoding: .utf8) ?? "")")
+                }
+            case .failure(let error):
+                print(error)
+            }
         }
     }
     
