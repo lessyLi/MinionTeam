@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class NewsTableViewCell: UITableViewCell {
 
@@ -26,6 +27,10 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet var shareButton: UIButton!
     @IBOutlet var shareLabel: UILabel!
     
+    var likeCount: Int = 0
+    var commentCount: Int = 0
+    var shareCount: Int = 0
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         newsTitle.text = nil
@@ -38,7 +43,33 @@ class NewsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    func configure(news: News, groups: [Int: Group]) {
+        
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "d MMM YYYY, HH:mm:ss"
+        
+        var groupID = 0
+        if news.sourceID < 0 {
+            groupID = news.sourceID * -1
+        }
+        
+        guard let urlString = groups[groupID]?.groupPhotoData,
+        let groupName = groups[groupID]?.name else { return }
+        if let url = URL(string: urlString) {
+            newsImage.kf.setImage(with: url)
+        }
+        newsTitle.text = groupName
+        newsText.text = news.newsDescription
 
+        likeCount = news.likesCount
+        commentCount = news.commentsCount
+        shareCount = news.repostsCount
+        
+        likeLabel.text = String(likeCount)
+        commentLabel.text = String(commentCount)
+        shareLabel.text = String(shareCount)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -48,13 +79,13 @@ class NewsTableViewCell: UITableViewCell {
     @IBAction func pressedLikeButton(_ sender: UIButton) {
         let button = sender
         button.setImage(UIImage(systemName: "heart"), for: .normal)
-        var likeCount = 107
+//        var likeCount = 107
         
         if isLiked {
             likeLabel.font = .systemFont(ofSize: 14)
             
             UIView.transition(with: likeLabel, duration: 0.5, options: .transitionCrossDissolve) {
-                self.likeLabel.text = String(likeCount - 1)
+                self.likeLabel.text = String(self.likeCount - 1)
                 self.likeLabel.textColor = .black
             }
             
@@ -65,7 +96,7 @@ class NewsTableViewCell: UITableViewCell {
             }
             
         } else {
-            likeCount += 1
+            self.likeCount += 1
             likeLabel.font = .boldSystemFont(ofSize: 14)
             
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.5, options: .curveEaseOut) {
@@ -78,7 +109,7 @@ class NewsTableViewCell: UITableViewCell {
             }
             
             UIView.transition(with: likeLabel, duration: 0.5, options: .transitionCrossDissolve) {
-                self.likeLabel.text = String(likeCount + 1)
+                self.likeLabel.text = String(self.likeCount + 1)
             }
             
             UIView.transition(with: likeView, duration: 0.5, options: .transitionCrossDissolve) {
